@@ -12,6 +12,9 @@ class SelectionType extends Model
     {
         return $this->hasMany(Property::class);
     }
-    public
+    public function userpost()
+    {
+        return $this->hasMany(UserPost::class);
+    }
     use HasFactory;
 }
