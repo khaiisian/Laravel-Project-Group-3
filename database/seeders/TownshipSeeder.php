@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Township;
 class TownshipSeeder extends Seeder
 {
     /**
@@ -12,6 +12,6 @@ class TownshipSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Township::factory(10)->create();
     }
 }
