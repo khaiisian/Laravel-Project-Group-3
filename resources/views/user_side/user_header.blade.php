@@ -32,14 +32,14 @@
 
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
-            <a class="nav-item nav-link link-body-emphasis active" href="#">Home</a>
+            <a class="nav-item nav-link link-body-emphasis" href="user_home">Home</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">To Sell</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">To Rent</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">View</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Posting</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Contact</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-comment icon_size"></i></a>
-            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-user"></i></a>
+            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size"></i></a>
+            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user"></i></a>
         </nav>
     </div>
 </div>

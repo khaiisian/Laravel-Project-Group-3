@@ -13,8 +13,12 @@ Route::get('user_home', function () {
 Route::get('owner_header', function () {
     return view('owner_side.owner_header');
 });
-
-
+Route::get('feedback', function () {
+    return view('user_side.feedback');
+});
+Route::get('profile', function () {
+    return view('user_side.profile');
+});
 
 
 

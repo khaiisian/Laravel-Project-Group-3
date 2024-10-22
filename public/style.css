@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.feedBackForm{
+    width: 35%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 3%;
+}
+.feedBackForm h3{
+    margin: 0 auto;
+}
+#about{
+    height: 150px;
+}
