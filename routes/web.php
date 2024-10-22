@@ -22,6 +22,17 @@ Route::get('profile', function () {
     return view('user_side.profile');
 });
 
+// routes/web.php hla hla 
+
+Route::get('/contact', function () {
+    return view('user.contactus'); 
+})->name('contact');
+
+Route::get('/profile', function () {
+    return view('user.userprofile'); 
+})->name('profile');
+
+// end 
 
 
 
