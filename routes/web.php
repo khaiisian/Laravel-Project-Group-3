@@ -22,31 +22,6 @@ Route::get('profile', function () {
     return view('user_side.profile');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
