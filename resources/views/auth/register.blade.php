@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('authcss/register.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+    {{-- Ajax for different register info --}}
     <script>
         function getRegisterInfo(){
             var register_type = $("#register_type").val();
