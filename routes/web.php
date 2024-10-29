@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\RegionController;
@@ -24,6 +25,8 @@ Route::get('feedback', function () {
 Route::get('profile', function () {
     return view('user_side.profile');
 });
+
+Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 
 
@@ -64,4 +67,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

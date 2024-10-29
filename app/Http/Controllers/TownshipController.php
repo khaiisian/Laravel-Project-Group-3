@@ -1,66 +1,23 @@
 <?php
 
+// TownshipController.php
 namespace App\Http\Controllers;
 
 use App\Models\Township;
-use App\Http\Requests\StoreTownshipRequest;
-use App\Http\Requests\UpdateTownshipRequest;
+use App\Models\Region;
+use App\Models\PropertyType;
+use Illuminate\Http\Request;
 
 class TownshipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public function showTownship($id) {
+        session(['selectedRegionId' => $id]); // Store selected region ID in session
+        $regions = Region::all();
+        $propertyTypes = PropertyType::all(); // Include property types to persist data on selection
+        $township = Township::where('region_id', '=', $id)->get(); // Fetch townships for the selected region
+        $selectedPropertyTypeId = session('selectedPropertyTypeId', null); // Get selected property type from session
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreTownshipRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Township $township)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Township $township)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateTownshipRequest $request, Township $township)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Township $township)
-    {
-        //
+        return view('user_side.user_home', compact('regions', 'propertyTypes', 'township', 'id as selectedRegionId', 'selectedPropertyTypeId'));
     }
 }
+

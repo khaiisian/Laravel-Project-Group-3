@@ -3,64 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Region;
-use App\Http\Requests\StoreRegionRequest;
-use App\Http\Requests\UpdateRegionRequest;
+use App\Models\PropertyType;
+use Illuminate\Http\Request;
 
 class RegionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public function showRegionList(Request $request) {
+        $regions = Region::all();
+        $propertyTypes = PropertyType::all(); // Include property types for initial load
+        $township = []; // Empty array initially, since no region is selected
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // Retrieve selected region from session or query
+        $selectedRegionId = session('selectedRegionId', null);
+        // Retrieve selected property type from query or session
+        $selectedPropertyTypeId = $request->query('propertyTypeId', session('selectedPropertyTypeId', null)); 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRegionRequest $request)
-    {
-        //
-    }
+        // If there's a selected property type ID, store it in the session
+        if ($selectedPropertyTypeId) {
+            session(['selectedPropertyTypeId' => $selectedPropertyTypeId]);
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Region $region)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Region $region)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRegionRequest $request, Region $region)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Region $region)
-    {
-        //
+        return view('user_side.user_home', compact('regions', 'propertyTypes', 'township', 'selectedRegionId', 'selectedPropertyTypeId'));
     }
 }
+
