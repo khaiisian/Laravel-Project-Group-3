@@ -1,17 +1,20 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyTypeController;
+use App\Http\Controllers\RegionController;
+use App\Http\Controllers\TownshipController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PropertyController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('user_header', function () {
     return view('user_side.user_header');
 });
-Route::get('user_home', function () {
-    return view('user_side.user_home');
-});
+Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
+Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
+Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
+
 Route::get('owner_header', function () {
     return view('owner_side.owner_header');
 });
