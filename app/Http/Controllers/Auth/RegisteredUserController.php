@@ -43,10 +43,33 @@ class RegisteredUserController extends Controller
             'role' => $request->register_type,
         ]);
 
-        $user->endUser()->create([
-            'phNo' => $request->phnumber,
-            'address' => $request->address,
-        ]);
+
+        if ($request->register_type == 1) {
+            $user->endUser()->create([
+                'phNo' => $request->phnumber,
+                'address' => $request->address,
+            ]);
+        } else if ($request->register_type == 2) {
+            $file = $request->file('nrc_img');
+            $movedlocation = 'NRCImages';
+            $file->move($movedlocation, $file->getClientOriginalName());
+            $user->houseOwner()->create([
+                'address' => $request->address,
+                'phNo' => $request->phnumber,
+                'fbLink' => $request->fblink,
+                'NRC' => $request->nrc_no,
+                'NRCImage' => $file->getClientOriginalName(),
+            ]);
+        }
+
+
+
+        // 'user_id', 'address', 'phNo', 'fbLink', 'profile', 'NRC', 'NRCImage'
+
+        // $user->houseOwner()->create([
+        //     'address'=>$request->address,
+        //     'phNo'=>$request->phN
+        // ]);
 
 
 

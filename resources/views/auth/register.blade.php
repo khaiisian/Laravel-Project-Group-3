@@ -36,7 +36,7 @@
 
 <body>
     <x-guest-layout>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mt-4">
@@ -50,7 +50,9 @@
 
 
             {{-- Register Info --}}
-            @include('auth.renter_info')
+            <div class="mt-4">
+                @include('auth.renter_info')
+            </div>
 
 
             <div class="flex items-center justify-end mt-4">

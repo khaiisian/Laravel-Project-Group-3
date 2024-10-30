@@ -18,33 +18,40 @@
     {{-- Phone Number --}}
     <div class="mt-4">
         <x-input-label for="phnumber" :value="__('Phone Number')" />
-        <x-text-input id="phnumber" class="block mt-1 w-full" type="tel" name="phnumber" :value="old('phnumber')"
-            required autocomplete="tel" />
+        <x-text-input id="phnumber" class="block mt-1 w-full" type="tel" name="phnumber" pattern="(\+95\s)?[0-9]{7,11}"
+            :value="old('phnumber')" required autocomplete="tel" />
         <x-input-error :messages="$errors->get('phnumber')" class="mt-2" />
     </div>
 
     {{-- Address--}}
     <div class="mt-4">
         <x-input-label for="address" :value="__('Address')" />
-        <x-text-input id="address" class="block mt-1 w-full" type="tel" name="phnumber" :value="old('phnumber')"
-            required autocomplete="tel" />
-        <x-input-error :messages="$errors->get('phnumber')" class="mt-2" />
+        <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required
+            autocomplete="text" />
+        <x-input-error :messages="$errors->get('address')" class="mt-2" />
     </div>
 
     {{-- Fb_link--}}
     <div class="mt-4">
         <x-input-label for="fblink" :value="__('Facebook Link')" />
-        <x-text-input id="fblink" class="block mt-1 w-full" type="tel" name="phnumber" :value="old('phnumber')" required
-            autocomplete="tel" />
-        <x-input-error :messages="$errors->get('phnumber')" class="mt-2" />
+        <x-text-input id="fblink" class="block mt-1 w-full" type="url" name="fblink" :value="old('fblink')" required
+            autocomplete="fblink" />
+        <x-input-error :messages="$errors->get('fblink')" class="mt-2" />
     </div>
 
     {{-- NRC Number--}}
     <div class="mt-4">
         <x-input-label for="nrc_no" :value="__('NRC Number')" />
-        <x-text-input id="nrc_no" class="block mt-1 w-full" type="tel" name="phnumber" :value="old('phnumber')" required
+        <x-text-input id="nrc_no" class="block mt-1 w-full" type="text" name="nrc_no" :value="old('nrc_no')" required
             autocomplete="tel" />
-        <x-input-error :messages="$errors->get('phnumber')" class="mt-2" />
+        <x-input-error :messages="$errors->get('nrc_no')" class="mt-2" />
+    </div>
+
+    {{-- NRC Image--}}
+    <div class="mt-4">
+        <x-input-label for="nrc_img" :value="__('NRC Number')" />
+        <input id="nrc_img" class="block mt-1 w-full" type="file" name="nrc_img" accept="image/*" required />
+        <x-input-error :messages="$errors->get('nrc_img')" class="mt-2" />
     </div>
 
 
