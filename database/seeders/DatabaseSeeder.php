@@ -20,8 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PropertyTypeSeeder::class);
         $this->call(SelectionTypeSeeder::class);
         $this->call(UserPostSeeder::class);
-        $this->call(PropertySeeder::class);
         $this->call(TransactionSeeder::class);
         $this->call(FeedbackSeeder::class);
+        $this->call([
+            PropertySeeder::class,
+            PropertyImageSeeder::class, // Add this if you want extra images
+        ]);
     }
 }

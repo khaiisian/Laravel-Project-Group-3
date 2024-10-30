@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('profile')->nullable();
             $table->string('NRC');
             $table->string('NRCImage');
-            $table->foreignIdFor(App\Models\User::class);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

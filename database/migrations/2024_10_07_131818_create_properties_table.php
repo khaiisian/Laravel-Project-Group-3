@@ -6,17 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(App\Models\PropertyType::class);
-            $table->foreignIdFor(App\Models\HouseOwner::class);
-            $table->foreignIdFor(App\Models\Township::class);
-            $table->foreignIdFor(App\Models\SelectionType::class);
+            $table->unsignedBigInteger('property_type_id'); // Ensure this matches the type in property_types
+            $table->unsignedBigInteger('house_owner_id'); // Ensure this matches the type in house_owners
+            $table->unsignedBigInteger('township_id'); // Ensure this matches the type in townships
+            $table->unsignedBigInteger('selection_type_id'); // Ensure this matches the type in selection_types
             $table->text('content');
             $table->string('address');
             $table->integer('bedRoom');
@@ -26,14 +24,17 @@ return new class extends Migration
             $table->string('status');
             $table->string('description');
             $table->integer('room');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->timestamps();
+
+            // Foreign keys with cascade on delete
+            $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');
+            $table->foreign('house_owner_id')->references('id')->on('house_owners')->onDelete('cascade');
+            $table->foreign('township_id')->references('id')->on('townships')->onDelete('cascade');
+            $table->foreign('selection_type_id')->references('id')->on('selection_types')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('properties');

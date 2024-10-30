@@ -28,5 +28,9 @@ class Property extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class);
+    }
     use HasFactory;
 }

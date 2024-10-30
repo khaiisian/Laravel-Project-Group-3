@@ -25,11 +25,18 @@ Route::get('feedback', function () {
 Route::get('profile', function () {
     return view('user_side.profile');
 });
-
+Route::get('userprofile', function () {
+    return view('user.userprofile');
+});
 Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 
-
+Route::get('/property/create', [PropertyController::class, 'create'])->name('property.create');
+Route::post('/property/store', [PropertyController::class, 'store'])->name('property.store');
+Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
+Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpost');
+Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
+Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
 
 
 
@@ -61,10 +68,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';
