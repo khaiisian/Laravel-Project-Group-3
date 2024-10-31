@@ -15,9 +15,9 @@ class AjaxController extends Controller
         $owner = view('auth.owner_info')->render();
 
 
-        if ($register_type == 1) {
+        if ($register_type === "renter") {
             $msg = $renter;
-        } else if ($register_type == 2) {
+        } else if ($register_type == "owner") {
             $msg = $owner;
         }
 

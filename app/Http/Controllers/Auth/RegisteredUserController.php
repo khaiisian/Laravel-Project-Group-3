@@ -44,12 +44,12 @@ class RegisteredUserController extends Controller
         ]);
 
 
-        if ($request->register_type == 1) {
+        if ($request->register_type === "renter") {
             $user->endUser()->create([
                 'phNo' => $request->phnumber,
                 'address' => $request->address,
             ]);
-        } else if ($request->register_type == 2) {
+        } else if ($request->register_type === "owner") {
             $file = $request->file('nrc_img');
             $movedlocation = 'NRCImages';
             $file->move($movedlocation, $file->getClientOriginalName());
@@ -77,6 +77,12 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if ($user->role === 'renter') {
+            return redirect(RouteServiceProvider::USERHOME);
+        } elseif ($user->role === 'owner') {
+            return redirect(RouteServiceProvider::OWNERHOME);
+        }
+
+        // return redirect(RouteServiceProvider::OWNERHOME);
     }
 }

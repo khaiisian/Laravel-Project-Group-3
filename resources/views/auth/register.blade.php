@@ -42,8 +42,8 @@
             <div class="mt-4">
                 <x-input-label for="register_type" :value="__('Register Type')" />
                 <select name="register_type" id="register_type" class="register_type" onchange="getRegisterInfo()">
-                    <option value="1">Renter</option>
-                    <option value="2">Owner</option>
+                    <option value="renter">Renter</option>
+                    <option value="owner">Owner</option>
                 </select>
                 <x-input-error :messages="$errors->get('register_type')" class="mt-2" />
             </div>
