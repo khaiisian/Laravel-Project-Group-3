@@ -28,6 +28,12 @@ Route::get('profile', function () {
 Route::get('userprofile', function () {
     return view('user.userprofile');
 });
+Route::get('contact', function () {
+    return view('user_side.contactus');
+});
+Route::get('user_post', function () {
+    return view('user_side.create');
+});
 Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 

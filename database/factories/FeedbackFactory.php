@@ -21,6 +21,7 @@ class FeedbackFactory extends Factory
         return [
             'title' => $this->faker->sentence(), // Generate a random title
             'about' => $this->faker->paragraph(), // Generate random feedback content
+            'rate' => $this->faker->numberBetween(1, 5), // Generate a random rating
             'user_id' => User::factory(), // Generate or associate with a user
             'created_at' => now(),
             'updated_at' => now(),

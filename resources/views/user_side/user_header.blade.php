@@ -36,8 +36,8 @@
             <a class="nav-item nav-link link-body-emphasis" href="#">To Sell</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">To Rent</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">View</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Posting</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Contact</a>
+            <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
+            <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
             <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size"></i></a>
             <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user"></i></a>
         </nav>
