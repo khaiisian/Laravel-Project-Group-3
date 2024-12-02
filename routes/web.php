@@ -46,26 +46,6 @@ Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('fi
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
