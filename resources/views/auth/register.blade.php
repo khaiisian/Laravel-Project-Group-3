@@ -36,21 +36,23 @@
 
 <body>
     <x-guest-layout>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mt-4">
                 <x-input-label for="register_type" :value="__('Register Type')" />
                 <select name="register_type" id="register_type" class="register_type" onchange="getRegisterInfo()">
-                    <option value="1">Renter</option>
-                    <option value="2">Owner</option>
+                    <option value="renter">Renter</option>
+                    <option value="owner">Owner</option>
                 </select>
                 <x-input-error :messages="$errors->get('register_type')" class="mt-2" />
             </div>
 
 
             {{-- Register Info --}}
-            @include('auth.renter_info')
+            <div class="mt-4">
+                @include('auth.renter_info')
+            </div>
 
 
             <div class="flex items-center justify-end mt-4">
