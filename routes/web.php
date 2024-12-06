@@ -10,8 +10,12 @@ use App\Models\UserPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\FeedbackController;
+
 
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
+
+
 
 Route::get('user_header', function () {
     return view('user_side.user_header');
@@ -73,6 +77,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
     Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
+    Route::post('/feedback/submit', [FeedbackController::class, 'store'])->name('feedback.submit')->middleware('auth');
+
 });
 
 require __DIR__ . '/auth.php';
