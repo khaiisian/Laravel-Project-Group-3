@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TownshipController;
+use App\Http\Controllers\UserPostController;
+use App\Models\UserPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 
@@ -32,8 +34,9 @@ Route::get('contact', function () {
     return view('user_side.contactus');
 });
 Route::get('user_post', function () {
-    return view('user_side.create');
+    return view('user_side.userpost');
 });
+
 Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 
@@ -58,6 +61,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
+    Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
+    Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
+    Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
+    Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
 });
 
 require __DIR__ . '/auth.php';

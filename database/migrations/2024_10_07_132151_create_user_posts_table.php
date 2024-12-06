@@ -13,14 +13,15 @@ return new class extends Migration {
         Schema::create('user_posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('end_user_id');
+            $table->unsignedBigInteger('region_id');
             $table->unsignedBigInteger('township_id');
             $table->unsignedBigInteger('selection_type_id');
             $table->text('content');
-            $table->date('currentDate');
             $table->string('requirement');
             $table->string('status');
             $table->timestamps();
             $table->foreign('end_user_id')->references('id')->on('end_users')->onDelete('cascade');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
             $table->foreign('township_id')->references('id')->on('townships')->onDelete('cascade');
             $table->foreign('selection_type_id')->references('id')->on('selection_types')->onDelete('cascade');
         });
