@@ -16,12 +16,12 @@ class Property extends Model
 
     public function township()
     {
-        return $this->belongsTo(Township::class);
+        return $this->belongsTo(Township::class, 'township_id');
     }
 
     public function propertyType()
     {
-        return $this->belongsTo(PropertyType::class);
+        return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
 
     public function transactions()

@@ -12,7 +12,12 @@ class PropertyTypeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function showPropertyType(){
+    public function showPropertyType()
+    {
+        // Fetch all property types from the database
+        $propertyTypes = PropertyType::all();
         
+        // Pass data to the view
+        return view('admin.property-types', compact('propertyTypes'));
     }
 }

@@ -34,6 +34,7 @@ Route::get('contact', function () {
 Route::get('user_post', function () {
     return view('user_side.create');
 });
+
 Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 
@@ -43,6 +44,11 @@ Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])
 Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpost');
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
+Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
+Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property_types');
+Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
+
+
 
 
 
