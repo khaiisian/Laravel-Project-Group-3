@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserPost extends Model
 {
-    protected $fillable = ['end_user_id','township_id','selection_type_id', 'content', 'currentDate', 'requirement', 'status'];
+    protected $fillable = ['end_user_id','region_id','township_id','selection_type_id', 'content', 'requirement', 'status'];
 
     public function enduser()
     {
         return $this->belongsTo(EndUser::class);
+    }
+    public function region()
+    {
+        return $this->belongsTo(Region::class);
     }
     public function township()
     {

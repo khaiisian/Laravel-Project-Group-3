@@ -5,62 +5,44 @@ namespace App\Http\Controllers;
 use App\Models\UserPost;
 use App\Http\Requests\StoreUserPostRequest;
 use App\Http\Requests\UpdateUserPostRequest;
+use App\Models\Region;
+use App\Models\PropertyType;
+use App\Models\Township;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UserPostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $regions = Region::all();
+        $townships = Township::all();
+        $propertyTypes = PropertyType::all();
+        $userPost = new UserPost(); // Default empty data for form
+
+        return view('user_side.userpost', compact('regions', 'townships', 'propertyTypes', 'userPost'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreUserPostRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        $validated = $request->validate([
+            'region' => 'required|exists:regions,id',
+            'township' => 'required|exists:townships,id',
+            'for_sale_or_rent' => 'required|in:rent,sell',
+            'content' => 'required|string|max:255',
+            'requirement' => 'required|string|max:255',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(UserPost $userPost)
-    {
-        //
-    }
+        $userPost = new UserPost();
+        $userPost->end_user_id = Auth::id(); // Set end_user_id to the logged-in user's ID
+        $userPost->region_id = $validated['region'];
+        $userPost->township_id = $validated['township'];
+        $userPost->selection_type_id = $validated['for_sale_or_rent'] == 'rent' ? 1 : 2; // Adjust this based on your selection types
+        $userPost->content = $validated['content']; // Set default or based on your use case
+        $userPost->requirement = $validated['requirement'];
+        $userPost->status = 'Pending'; // Default status
+        $userPost->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UserPost $userPost)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateUserPostRequest $request, UserPost $userPost)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(UserPost $userPost)
-    {
-        //
+        return redirect()->back()->with('success', 'Post submitted successfully!');
     }
 }

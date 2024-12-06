@@ -1,0 +1,148 @@
+[33mcommit 58f3564b3faa66649469dbc623e5b9d782519691[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 0c68b91 3026219
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Dec 2 21:39:24 2024 +0630
+
+    UserSide
+
+[33mcommit 0c68b919d3c3eb83edf3b8a8ae28ab9af9a5ef6a[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Dec 2 21:37:31 2024 +0630
+
+    UserSide
+
+[33mcommit 8df20c22fe93332ae56e43bcf5d9173bde64beca[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Dec 2 21:31:37 2024 +0630
+
+    UI
+
+[33mcommit 3026219ab24f67a9880d20ff05c0f4203871ff24[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Thu Oct 31 23:49:27 2024 +0630
+
+    login And Register Function [Complete]
+
+[33mcommit 8c49cb23bf1aa91080f0c1ea21dcfc405755df1b[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Wed Oct 30 22:06:52 2024 +0630
+
+    owner register NRC image upload [Complete]
+
+[33mcommit 04e5ebdd1a0998ac42764d30e5273c49f4d65e7e[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Wed Oct 30 14:42:42 2024 +0630
+
+    update migrate
+
+[33mcommit 94a5830fa1a79aa3161fb5540faed3071951ad25[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Wed Oct 30 01:36:43 2024 +0630
+
+    register function & user and end_user relation migration changes
+
+[33mcommit c9d0467f966f71b6bee043182af87e59383a5668[m
+Merge: 77e1dbf 74e4ecc
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Tue Oct 29 22:23:15 2024 +0630
+
+    filter
+
+[33mcommit 77e1dbf39c432555411b8747a0ae0b8b05c3ad4c[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Tue Oct 29 21:19:00 2024 +0630
+
+    filter
+
+[33mcommit 74e4eccfd60a7007c829df8e9d442bc226abbd44[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Tue Oct 29 17:35:44 2024 +0630
+
+    Ajax Login Feature
+
+[33mcommit a9c27014b5774553d6ffd0cc2cbaff38402b98b6[m
+Merge: 850c346 fca5164
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Fri Oct 25 12:31:22 2024 +0630
+
+    Resolved merge conflict in routes/web.php
+
+[33mcommit 850c346eb83bb24699918a485ab1e8b3dd88a4d5[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Fri Oct 25 12:29:00 2024 +0630
+
+    test
+
+[33mcommit fca5164aad9dce80ee8f90dcf772871908d3d3dc[m
+Author: CindyW03 <hlawinnwe0352@gmail.com>
+Date:   Tue Oct 22 23:27:57 2024 +0630
+
+    HlaHla
+
+[33mcommit 8db23bbb0e46e29d75c58d3146880052efac9ae3[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Tue Oct 22 21:57:16 2024 +0630
+
+    reg & login
+
+[33mcommit 9344143aafcd451cc5e39816adc8a1364e5d839b[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Tue Oct 22 21:29:38 2024 +0630
+
+    feedback & profile
+
+[33mcommit 4f5daa4d180e0db58e3da63bbf402d18ef08da1b[m
+Merge: 256cc58 0eceb2d
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Oct 21 19:46:18 2024 +0630
+
+    Factory and Seeder
+
+[33mcommit 256cc581e2d36fff5a17c3db09efa039c987618f[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Oct 21 19:42:14 2024 +0630
+
+    Factory and Seeder
+
+[33mcommit 0eceb2dd04bee3ee763ce55a9711db0d6a33dd40[m
+Merge: 79cae5d 39bd31c
+Author: WeryM00 <96080635+WeryM00@users.noreply.github.com>
+Date:   Mon Oct 7 23:37:51 2024 +0630
+
+    headers & user home
+
+[33mcommit 79cae5dfde1df71c55f95b3ea406fe2ee9c2226f[m
+Author: WeryM00 <96080635+WeryM00@users.noreply.github.com>
+Date:   Mon Oct 7 23:16:01 2024 +0630
+
+    Add user and owner header files: user_side/user_header.blade.php, user_side/user_home.blade.php, and owner_side/owner_header.php
+
+[33mcommit 39bd31cb3f5bf1d98369bf94ed14dd774d971cbe[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Oct 7 21:49:34 2024 +0630
+
+    model
+
+[33mcommit 6db248be7fb8d192ae63940f6faf8ad71d3db0d4[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Oct 7 21:33:09 2024 +0630
+
+    migration
+
+[33mcommit 6114f06b86b362c5a3c46cd69d4c594de72d1985[m
+Author: Belet-Abaddon <sawmyatmonhnin1420@gmail.com>
+Date:   Mon Sep 30 21:52:45 2024 +0630
+
+    breeze install
+
+[33mcommit 391e337f3f20d8f75dbf4cb9db5b9756ec7c3a98[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Sat Sep 28 22:45:58 2024 +0630
+
+    1st commit
+
+[33mcommit 419db1cd1b6c46db66eb555e51a9b7b231fdc9ad[m
+Author: Khai Sian Taang <khaisian.khaisiantaang@gmail.com>
+Date:   Sat Sep 28 22:44:21 2024 +0630
+
+    first commit

@@ -153,4 +153,12 @@ class PropertyController extends Controller
         // Logic for filtering properties
         return view('user_side.userfilter'); // Display filtered properties
     }
+    public function showProperties()
+    {
+        // Retrieve all properties
+        $properties = Property::get();  // eager loading the relationships
+
+        // Pass the properties to the view
+        return view('admin.properties', compact('properties'));
+    }
 }
