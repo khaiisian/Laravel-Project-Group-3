@@ -7,7 +7,9 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TownshipController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\TransactionController;
 
+Route::get('/admin/transactions', [TransactionController::class, 'show']);
 
 Route::get('user_header', function () {
     return view('user_side.user_header');
@@ -61,3 +63,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
