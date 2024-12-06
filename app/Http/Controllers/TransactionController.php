@@ -11,5 +11,9 @@ class TransactionController extends Controller {
         return view('admin.transactions', compact('transactions'));
     }
 }
-
-
+=======
+class TransactionController extends Controller
+{
+    
+}
+>>>>>>> 34fed74c39f409fba637f1caf480e5faa4ec3411

@@ -4,7 +4,7 @@
 <link rel="stylesheet" href='public/blog.rtl.css'>
 
 
-<div class="container">
+<div class="container-fluid">
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
@@ -38,8 +38,8 @@
             <a class="nav-item nav-link link-body-emphasis" href="#">View</a>
             <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
-            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size"></i></a>
-            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user"></i></a>
+            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
+            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>
         </nav>
     </div>
 </div>

@@ -115,7 +115,7 @@
 
     @include('user_side.user_header')
 
-    <main class="container">
+    <main class="container-fluid p-4">
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
             <div class="container">
                 <!-- Property Filter Form -->
@@ -197,9 +197,10 @@
                     @endif
                 </div>
             </div>
+           
     </main>
-
     @include('user_side.user_footer')
+ 
 
 
 </body>
