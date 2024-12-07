@@ -56,7 +56,7 @@
                     </div>
                     @endif
 
-                    <form action="{{ route('feedback.submit') }}" method="POST">
+                    <form action="{{ route('user.feedback.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
