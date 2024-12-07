@@ -161,4 +161,7 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
+    public function goToSell(Request $request){
+        return view('user_side.to_sell');
+    }
 }
