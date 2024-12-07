@@ -88,28 +88,28 @@
         @else
         <div class="row">
             @foreach ($properties as $property)
-            <div class="col-md-3 col-sm-6">
-                <div class="card card-block p-4">
-                    <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
+                <div class="col-md-3 col-sm-6">
+                    <div class="card card-block p-4">
+                        <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
 
-                    <!-- Handle both string and collection cases for images -->
-                    @if(is_iterable($property->images))
-                    @if($property->images->isNotEmpty())
-                    <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" />
-                    @endif
-                    @elseif(is_string($property->images))
-                    <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
-                    @else
-                    <p>No images available</p>
-                    @endif
+                        <!-- Handle both string and collection cases for images -->
+                        @if(is_iterable($property->images))
+                        @if($property->images->isNotEmpty())
+                        <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" />
+                        @endif
+                        @elseif(is_string($property->images))
+                        <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
+                        @else
+                        <p>No images available</p>
+                        @endif
 
-                    <p class="card-text mt-2"><strong>House Owner:</strong>{{ $property->houseOwner->user->name ?? 'Owner Unknown' }}</p>
-                    <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
-                    <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
-                    <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
+                        <p class="card-text mt-2"><strong>House Owner:</strong>{{ $property->houseOwner->user->name ?? 'Owner Unknown' }}</p>
+                        <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
+                        <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
+                        <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
 
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
