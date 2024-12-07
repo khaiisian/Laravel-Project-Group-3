@@ -163,9 +163,16 @@ class PropertyController extends Controller
         return view('admin.properties', compact('properties'));
     }
     public function goToSell(Request $request)
-
     {
-        $properties = Property::with(['houseOwner', 'township', 'propertyType', 'images'])->get();
+        $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType', 'images'])->get();
+    
+
+    
         return view('user_side.to_sell', compact('properties'));
     }
+    
+    
+    
+    
+    
 }

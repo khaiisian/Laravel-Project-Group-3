@@ -75,23 +75,41 @@
     <div class="container mt-2">
 
         <div class="row">
-            @foreach ($properties as $property) 
-            <div class="col-md-3 col-sm-6">
-                <div class="card card-block p-4">
-                    <!-- Property Type -->
-                    <h4 class="card-title text-right"><i class="material-icons">settings</i></h4>
-                    <!-- Property Image -->
-                    <img src="{{ $property->image_url ?? asset('default-image.jpg') }}" alt="Property Image" class="img-fluid rounded">
-                    <!-- House Owner Name -->
-                    <h5 class="card-title mt-3 mb-3">{{ $property->houseOwner->name ?? 'Owner Unknown' }}</h5>  
-                    <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
-                    <!-- Township Name -->
-                    <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
-                    <!-- Selection Type Name -->
-                    <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
+        @foreach ($properties as $property)
+    <div class="col-md-3 col-sm-6">
+        <div class="card card-block p-4">
+            <h4 class="card-title text-right"><i class="fa-solid fa-gear"></i></h4>
+            <h5 class="card-title mt-3 mb-3">
+                {{ $property->houseOwner->user->name ?? 'Owner Unknown' }}
+            </h5>
+            <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
+            <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
+            <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
+
+            <!-- Display images if they exist -->
+            @if($property->images->isNotEmpty())
+                <div class="property-images">
+                    @foreach ($property->images as $image)
+                        <!-- Ensure image path is correct -->
+                        <img src="{{ $image->image_path }}" alt="Property Image" class="img-fluid rounded">
+                    @endforeach
                 </div>
-            </div>
-            @endforeach
+            @else
+                <p>No images available</p>
+            @endif
+        </div>
+    </div>
+@endforeach
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
 
