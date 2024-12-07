@@ -33,4 +33,21 @@ class Property extends Model
         return $this->hasMany(PropertyImage::class);
     }
     use HasFactory;
+
+    protected $fillable = [
+        'property_type_id',
+        'house_owner_id',
+        'township_id',
+        'selection_type',
+        'content',
+        'address',
+        'bedroom',
+        'bathroom',
+        'area',
+        'price',
+        'status',
+        'description',
+        'room',
+        'image',
+    ];
 }

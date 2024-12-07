@@ -161,4 +161,6 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
+    
+
 }

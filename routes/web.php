@@ -47,12 +47,11 @@ Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpos
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
 Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
-Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property_types');
+Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
 Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
-
-
-
-
+// route for store Property.
+Route::get('/admin/properties', [AdminController::class, 'index'])->name('admin.properties.index');
+Route::post('/admin/properties', [AdminController::class, 'store'])->name('admin.storeProperty');
 
 Route::get('/', function () {
     return view('welcome');
