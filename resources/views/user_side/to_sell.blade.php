@@ -75,31 +75,29 @@
     <div class="container mt-2">
 
         <div class="row">
-        @foreach ($properties as $property)
-    <div class="col-md-3 col-sm-6">
-        <div class="card card-block p-4">
-            <h4 class="card-title text-right"><i class="fa-solid fa-gear"></i></h4>
-            <h5 class="card-title mt-3 mb-3">
-                {{ $property->houseOwner->user->name ?? 'Owner Unknown' }}
-            </h5>
-            <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
-            <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
-            <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
-
-            <!-- Display images if they exist -->
-            @if($property->images->isNotEmpty())
-                <div class="property-images">
+            @foreach ($properties as $property)
+            <div class="col-md-3 col-sm-6">
+                <div class="card card-block p-4">
+                    <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
+                    @if(is_iterable($property->images) && $property->images->isNotEmpty())
                     @foreach ($property->images as $image)
-                        <!-- Ensure image path is correct -->
-                        <img src="{{ $image->image_path }}" alt="Property Image" class="img-fluid rounded">
+                    <img src="{{ asset('storage/' . $image->image_path) }}" alt="Property Image" />
                     @endforeach
+                    @elseif(is_string($property->images))
+                    <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
+                    @else
+                    <p>No images available</p>
+                    @endif
+                    <p class="card-text mt-2"><strong>House Owner:</strong>{{ $property->houseOwner->user->name ?? 'Owner Unknown' }}</p>
+                    <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
+                    <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
+                    <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
+
+                    <!-- Display images if they exist -->
+
                 </div>
-            @else
-                <p>No images available</p>
-            @endif
-        </div>
-    </div>
-@endforeach
+            </div>
+            @endforeach
 
 
 

@@ -164,12 +164,14 @@ class PropertyController extends Controller
     }
     public function goToSell(Request $request)
     {
+        // Fetch properties with their related houseOwner, township, propertyType, selectionType, and images
         $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType', 'images'])->get();
     
-
-    
+        
+        // Pass properties to the view
         return view('user_side.to_sell', compact('properties'));
     }
+    
     
     
     
