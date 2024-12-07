@@ -10,6 +10,7 @@ use App\Models\Township;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PropertyImage;
+
 class PropertyController extends Controller
 {
     public function showFilter()
@@ -130,7 +131,7 @@ class PropertyController extends Controller
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . $image->getClientOriginalName();
                 $image->move(public_path('images'), $imageName);
-                
+
                 // Save image in PropertyImage model
                 PropertyImage::create([
                     'property_id' => $property->id,
@@ -161,6 +162,32 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
+<<<<<<< HEAD
     
 
 }
+=======
+    public function goToSelectionType(Request $request)
+    {
+        // Get the selection type ID from the request
+        $selectionTypeId = $request->get('id');
+    
+        // Fetch properties that match the selection type, including related data
+        $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType', 'images'])
+            ->when($selectionTypeId, function ($query) use ($selectionTypeId) {
+                $query->where('selection_type_id', $selectionTypeId);
+            })
+            ->get();
+    
+        // Pass properties and selection type ID to the view
+        return view('user_side.selection-type', compact('properties', 'selectionTypeId'));
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+>>>>>>> b5f61cd21706619ebef8c8dd917117abb5604e19

@@ -21,14 +21,20 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $user = Auth::guard($guard)->user();
-                if ($user->role === "renter") {
-                    return redirect(RouteServiceProvider::USERHOME);
-                } elseif ($user->role === "owner") {
-                    return redirect(RouteServiceProvider::OWNERHOME);
-                }
+                return redirect(RouteServiceProvider::USERHOME);
             }
         }
+
+        // foreach ($guards as $guard) {
+        //     if (Auth::guard($guard)->check()) {
+        //         $user = Auth::guard($guard)->user();
+        //         if ($user->role === "renter") {
+        //             return redirect(RouteServiceProvider::USERHOME);
+        //         } elseif ($user->role === "owner") {
+        //             return redirect(RouteServiceProvider::OWNERHOME);
+        //         }
+        //     }
+        // }
 
         return $next($request);
     }

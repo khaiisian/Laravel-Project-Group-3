@@ -1,0 +1,22 @@
+.tableborder {
+    border: 1px solid black; /* Adds a 1px solid black border */
+    border-collapse: collapse; /* Ensures borders are not doubled */
+    width: 80%; /* Optional: Sets the width of the table */
+    margin: 0 auto; /* Centers the table horizontally */
+}
+
+.tableborder th, .tableborder td {
+    border: 2px solid black; /* Adds a 1px solid black border */
+    padding: 8px; /* Adds padding inside the cells */
+    text-align: center; /* Centers the text in the table headers and cells */
+}
+.tableborder{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.adminhead{
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.body{
+    background-color: red;
+}

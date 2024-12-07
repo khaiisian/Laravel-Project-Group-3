@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserPostRequest;
 use App\Models\Region;
 use App\Models\PropertyType;
 use App\Models\Township;
+use App\Models\EndUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -45,4 +46,47 @@ class UserPostController extends Controller
 
         return redirect()->back()->with('success', 'Post submitted successfully!');
     }
+    // Fetch user information by end_user_id
+    private function getUserInfo($end_user_id)
+    {
+        $endUser = EndUser::with('user')->find($end_user_id);
+        return $endUser ? $endUser : null;
+    }
+
+    // Fetch region name by region_id
+    private function getRegionName($region_id)
+    {
+        $region = Region::find($region_id);
+        return $region ? $region->name : 'Region not available';
+    }
+
+    // Fetch township name by township_id
+    private function getTownshipName($township_id)
+    {
+        $township = Township::find($township_id);
+        return $township ? $township->name : 'Township not available';
+    }
+
+    // Main function to display posts
+    public function show()
+    {
+        // Get all posts
+        $posts = UserPost::all();
+
+        // Process each post
+        foreach ($posts as $post) {
+            // Attach user info
+            $post->user_info = $this->getUserInfo($post->end_user_id);
+
+            // Attach region name
+            $post->region_name = $this->getRegionName($post->region_id);
+
+            // Attach township name
+            $post->township_name = $this->getTownshipName($post->township_id);
+        }
+
+        // Return to the view
+        return view('user_side.view', compact('posts'));
+    }
+
 }

@@ -12,5 +12,9 @@ class EndUser extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function userposts()
+    {
+        return $this->hasMany(UserPost::class, 'end_user_id');
+    }
     use HasFactory;
 }

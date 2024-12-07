@@ -6,15 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_type_id'); // Ensure this matches the type in property_types
-            $table->unsignedBigInteger('house_owner_id'); // Ensure this matches the type in house_owners
-            $table->unsignedBigInteger('township_id'); // Ensure this matches the type in townships
-            $table->unsignedBigInteger('selection_type_id'); // Ensure this matches the type in selection_types
+            $table->unsignedBigInteger('property_type_id'); // Matches the type in property_types
+            $table->unsignedBigInteger('house_owner_id'); // Matches the type in house_owners
+            $table->unsignedBigInteger('township_id'); // Matches the type in townships
+            $table->unsignedBigInteger('selection_type_id'); // Matches the type in selection_types
             $table->text('content');
             $table->string('address');
             $table->integer('bedRoom');
@@ -27,16 +26,28 @@ return new class extends Migration
             $table->string('images')->nullable();
             $table->timestamps();
 
-            // Foreign keys with cascade on delete
-            $table->foreign('property_type_id')->references('id')->on('property_types')->onDelete('cascade');
-            $table->foreign('house_owner_id')->references('id')->on('house_owners')->onDelete('cascade');
-            $table->foreign('township_id')->references('id')->on('townships')->onDelete('cascade');
-            $table->foreign('selection_type_id')->references('id')->on('selection_types')->onDelete('cascade');
+            // Foreign keys with explicit names
+            $table->foreign('property_type_id', 'fk_properties_property_type')
+                ->references('id')->on('property_types')
+                ->onDelete('cascade');
+
+            $table->foreign('house_owner_id', 'fk_properties_house_owner')
+                ->references('id')->on('house_owners')
+                ->onDelete('cascade');
+
+            $table->foreign('township_id', 'fk_properties_township')
+                ->references('id')->on('townships')
+                ->onDelete('cascade');
+
+            $table->foreign('selection_type_id', 'fk_properties_selection_type')
+                ->references('id')->on('selection_types')
+                ->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
+        // Drop the table
         Schema::dropIfExists('properties');
     }
 };

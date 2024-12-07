@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Property extends Model
 {
-    protected $fillable = ['house_owner_id','township_id','property_type_id','transaction_id','content', 'address', 'bedRoom', 'bathRoom', 'area', 'price', 'status', 'description', 'room', 'images'];
+    protected $fillable = [
+        'house_owner_id', 'township_id', 'property_type_id', 'transaction_id', 'content',
+        'address', 'bedRoom', 'bathRoom', 'area', 'price', 'status', 'description', 'room', 'images'
+    ];
 
     public function houseOwner()
     {
-        return $this->belongsTo(HouseOwner::class);
+        return $this->belongsTo(HouseOwner::class, 'house_owner_id');
     }
 
     public function township()
@@ -24,14 +27,22 @@ class Property extends Model
         return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
 
+    public function selectionType()
+    {
+        return $this->belongsTo(SelectionType::class, 'selection_type_id');
+    }
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
+
     public function images()
     {
-        return $this->hasMany(PropertyImage::class);
+        return $this->hasMany(PropertyImage::class); // Replace `Image` with your actual image model name
     }
+    
+    
     use HasFactory;
 
     protected $fillable = [

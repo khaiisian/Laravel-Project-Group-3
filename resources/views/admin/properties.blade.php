@@ -115,8 +115,22 @@
                     @foreach ($properties as $property)
                         <tr>
                             <td>{{ $property->id }}</td>
+<<<<<<< HEAD
                             <td>{{ $property->type }}</td>
                             <td>${{ number_format($property->price, 2) }}</td>
+=======
+                            <td>{{ $property->property_type_id }}</td>
+                            <td>{{ $property->house_owner_id }}</td>
+                            <td>{{ $property->township_id }}</td>
+                            <td>{{ $property->selection_type }}</td>
+                            <td>{{ $property->content }}</td>
+                            <td>{{ $property->address }}</td>
+                            <td>{{ $property->bedroom }}</td>
+                            <td>{{ $property->bathroom }}</td>
+                            <td>{{ $property->area }}</td>
+                            <td>{{ number_format($property->price, 2) }}</td>
+                            <td>{{ $property->status }}</td>
+>>>>>>> b5f61cd21706619ebef8c8dd917117abb5604e19
                             <td>{{ $property->description }}</td>
                             <td><img src="{{ asset('storage/' . $property->image) }}" alt="Property Image" style="width: 50px;"></td>
                             <td>{{ $property->created_at }}</td>
