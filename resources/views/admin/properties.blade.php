@@ -50,7 +50,7 @@
                             <td>{{ $property->bedroom }}</td>
                             <td>{{ $property->bathroom }}</td>
                             <td>{{ $property->area }}</td>
-                            <td>${{ number_format($property->price, 2) }}</td>
+                            <td>{{ number_format($property->price, 2) }}</td>
                             <td>{{ $property->status }}</td>
                             <td>{{ $property->description }}</td>
                             <td>{{ $property->room }}</td>

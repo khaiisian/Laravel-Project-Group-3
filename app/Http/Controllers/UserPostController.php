@@ -46,16 +46,46 @@ class UserPostController extends Controller
 
         return redirect()->back()->with('success', 'Post submitted successfully!');
     }
+    // Fetch user information by end_user_id
+    private function getUserInfo($end_user_id)
+    {
+        $endUser = EndUser::with('user')->find($end_user_id);
+        return $endUser ? $endUser : null;
+    }
+
+    // Fetch region name by region_id
+    private function getRegionName($region_id)
+    {
+        $region = Region::find($region_id);
+        return $region ? $region->name : 'Region not available';
+    }
+
+    // Fetch township name by township_id
+    private function getTownshipName($township_id)
+    {
+        $township = Township::find($township_id);
+        return $township ? $township->name : 'Township not available';
+    }
+
+    // Main function to display posts
     public function show()
     {
-        // Step 1: Get all posts data with related information
-        $posts = UserPost::with([
-            'enduser.user',        // Fetch user data through enduser relationship
-            'region',              // Fetch region data
-            'township'             // Fetch township data
-        ])->get();
+        // Get all posts
+        $posts = UserPost::all();
 
-        // Step 2: Return the data to the view
+        // Process each post
+        foreach ($posts as $post) {
+            // Attach user info
+            $post->user_info = $this->getUserInfo($post->end_user_id);
+
+            // Attach region name
+            $post->region_name = $this->getRegionName($post->region_id);
+
+            // Attach township name
+            $post->township_name = $this->getTownshipName($post->township_id);
+        }
+
+        // Return to the view
         return view('user_side.view', compact('posts'));
     }
 
