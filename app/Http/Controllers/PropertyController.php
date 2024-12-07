@@ -162,10 +162,26 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
-    public function goToSell(Request $request)
-
+    public function goToSelectionType(Request $request)
     {
-        $properties = Property::with(['houseOwner', 'township', 'propertyType', 'images'])->get();
-        return view('user_side.to_sell', compact('properties'));
+        // Get the selection type ID from the request
+        $selectionTypeId = $request->get('id');
+    
+        // Fetch properties that match the selection type, including related data
+        $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType', 'images'])
+            ->when($selectionTypeId, function ($query) use ($selectionTypeId) {
+                $query->where('selection_type_id', $selectionTypeId);
+            })
+            ->get();
+    
+        // Pass properties and selection type ID to the view
+        return view('user_side.selection-type', compact('properties', 'selectionTypeId'));
     }
+    
+    
+    
+    
+    
+    
+    
 }

@@ -70,30 +70,51 @@
     }
 </style>
 
-<body>
-    @include('user_side.user_header')
-    <div class="container mt-2">
 
+    @include('user_side.user_header')
+
+    <div class="container mt-2">
+        <h1 class="mb-4">
+            @if ($selectionTypeId == 1)
+            Properties To Sell
+            @elseif ($selectionTypeId == 2)
+            Properties To Rent
+            @else
+            All Properties
+            @endif
+        </h1>
+        @if ($properties->isEmpty())
+        <p>No properties found for this selection type.</p>
+        @else
         <div class="row">
-            @foreach ($properties as $property) 
+            @foreach ($properties as $property)
             <div class="col-md-3 col-sm-6">
                 <div class="card card-block p-4">
-                    <!-- Property Type -->
-                    <h4 class="card-title text-right"><i class="material-icons">settings</i></h4>
-                    <!-- Property Image -->
-                    <img src="{{ $property->image_url ?? asset('default-image.jpg') }}" alt="Property Image" class="img-fluid rounded">
-                    <!-- House Owner Name -->
-                    <h5 class="card-title mt-3 mb-3">{{ $property->houseOwner->name ?? 'Owner Unknown' }}</h5>  
+                    <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
+
+                    <!-- Handle both string and collection cases for images -->
+                    @if(is_iterable($property->images))
+                    @if($property->images->isNotEmpty())
+                    <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" />
+                    @endif
+                    @elseif(is_string($property->images))
+                    <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
+                    @else
+                    <p>No images available</p>
+                    @endif
+
+                    <p class="card-text mt-2"><strong>House Owner:</strong>{{ $property->houseOwner->user->name ?? 'Owner Unknown' }}</p>
                     <p class="card-text"><strong>Township:</strong> {{ $property->township->name ?? 'N/A' }}</p>
-                    <!-- Township Name -->
                     <p class="card-text"><strong>Property Type:</strong> {{ $property->propertyType->name ?? 'N/A' }}</p>
-                    <!-- Selection Type Name -->
                     <p class="card-text"><strong>Selection Type:</strong> {{ $property->selectionType->name ?? 'N/A' }}</p>
+
                 </div>
             </div>
             @endforeach
         </div>
     </div>
+    @endif
+    </div>
 
+    </body>
     @include('user_side.user_footer')
-</body>
