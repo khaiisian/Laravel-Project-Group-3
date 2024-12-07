@@ -19,5 +19,11 @@ class TownshipController extends Controller
 
         return view('user_side.user_home', compact('regions', 'propertyTypes', 'township', 'id as selectedRegionId', 'selectedPropertyTypeId'));
     }
+    public function showTownships()
+    {
+        $townships = Township::all(); // Get all townships from the database
+        return view('admin.townships', compact('townships')); // Pass the townships to the view
+    }
+
 }
 

@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <style>
         .star-rating {
@@ -44,36 +43,52 @@
             <div class="col-md-8">
                 <div class="p-4 border rounded bg-light">
                     <h4 class="mb-3">Share Your Feedback</h4>
-                    <form action="#" method="POST">
+
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+
+                    @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
+                    <form action="{{ route('feedback.submit') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Title"
-                                required>
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
                         </div>
+
                         <div class="mb-3">
-                            <label for="message" class="form-label">Your Feedback</label>
-                            <textarea class="form-control" id="message" name="message" rows="5"
-                                placeholder="Write your feedback here..." required></textarea>
+                            <label for="about" class="form-label">Your Feedback</label>
+                            <textarea class="form-control" id="about" name="about" rows="5" placeholder="Write your feedback here..." required></textarea>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Rate Us</label>
                             <div class="star-rating">
-                                <input type="radio" id="star5" name="rating" value="5">
+                                <input type="radio" id="star5" name="rate" value="5">
                                 <label for="star5">&#9733;</label>
-                                <input type="radio" id="star4" name="rating" value="4">
+                                <input type="radio" id="star4" name="rate" value="4">
                                 <label for="star4">&#9733;</label>
-                                <input type="radio" id="star3" name="rating" value="3">
+                                <input type="radio" id="star3" name="rate" value="3">
                                 <label for="star3">&#9733;</label>
-                                <input type="radio" id="star2" name="rating" value="2">
+                                <input type="radio" id="star2" name="rate" value="2">
                                 <label for="star2">&#9733;</label>
-                                <input type="radio" id="star1" name="rating" value="1">
+                                <input type="radio" id="star1" name="rate" value="1">
                                 <label for="star1">&#9733;</label>
                             </div>
                         </div>
 
-
                         <button type="submit" class="btn btn-primary w-100">Submit Feedback</button>
                     </form>
+
+
+
                 </div>
             </div>
         </div>

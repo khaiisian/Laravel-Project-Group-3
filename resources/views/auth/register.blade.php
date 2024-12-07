@@ -41,7 +41,8 @@
 
             <div class="mt-4">
                 <x-input-label for="register_type" :value="__('Register Type')" />
-                <select name="register_type" id="register_type" class="register_type" onchange="getRegisterInfo()">
+                <select name="register_type" id="register_type" class="register_type bg-gray-200"
+                    onchange="getRegisterInfo()">
                     <option value="renter">Renter</option>
                     <option value="owner">Owner</option>
                 </select>
@@ -56,7 +57,7 @@
 
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                <a class="underline text-sm text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
