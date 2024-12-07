@@ -35,6 +35,8 @@ Route::get('user_post', function () {
     return view('user_side.userpost');
 });
 
+
+
 // Route able to access after login
 Route::middleware('auth')->group(function () {
     Route::get('owner_header', function () {

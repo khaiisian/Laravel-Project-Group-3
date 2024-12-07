@@ -37,10 +37,9 @@
                     <!-- User Information -->
                     <div class="d-flex align-items-center mb-3">
                         <div>
-                            @if ($post->enduser && $post->enduser->user)
-                                <h5 class="mb-0">{{ $post->enduser->user->name }}</h5>
-                                <small class="text-muted">Phone: {{ $post->enduser->phNo }}</small><br>
-                                <small class="text-muted">Address: {{ $post->enduser->address }}</small><br>
+                            @if ($post->user_info)
+                                <h5 class="mb-0">{{ $post->user_info->user->name ?? 'Name not available' }}</h5>
+
                             @else
                                 <h5 class="mb-0 text-danger">User information not available</h5>
                             @endif
@@ -49,12 +48,15 @@
                     </div>
 
                     <!-- Region and Township Information -->
-                    <p><strong>Region:</strong> {{ $post->region->name ?? 'Region not available' }}</p>
-                    <p><strong>Township:</strong> {{ $post->township->name ?? 'Township not available' }}</p>
+                    <p><strong>Region:</strong> {{ $post->region_name }}</p>
+                    <p><strong>Township:</strong> {{ $post->township_name }}</p>
 
                     <!-- Post Details -->
                     <p><strong>Content:</strong> {{ $post->content }}</p>
                     <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
+                    <h4>Contact</h4>
+                    <small class="text-muted">Phone: {{ $post->user_info->phNo }}</small><br>
+                    <small class="text-muted">Address: {{ $post->user_info->address }}</small><br>
                 </div>
             </div>
         @endforeach
