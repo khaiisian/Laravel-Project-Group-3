@@ -22,12 +22,11 @@ Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
 
 // Route able access before login
-Route::get('/', [PropertyController::class, 'showFilter'])->name('before.home');
+Route::get('/', [PropertyController::class, 'showFilter'])->name('home');
 Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
 Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
-Route::get('feedback', function () {
-    return view('user_side.feedback');
-});
+Route::get('/feedback', [FeedbackController::class, 'index'])->name('user.feedback');
+Route::get('/tosell', [PropertyController::class, 'goToSell'])->name('user.to_sell');
 Route::get('contact', function () {
     return view('user_side.contactus');
 });
@@ -37,7 +36,6 @@ Route::get('user_post', function () {
 
 // Route able to access after login
 Route::middleware('auth')->group(function () {
-    Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
     Route::get('owner_header', function () {
         return view('owner_side.owner_header');
     });
