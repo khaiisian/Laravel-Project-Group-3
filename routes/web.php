@@ -89,10 +89,5 @@ Route::middleware('auth')->group(function () {
 
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('user_header', function () {
-//     return view('user_side.user_header');
-// });
+
 require __DIR__ . '/auth.php';

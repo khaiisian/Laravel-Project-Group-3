@@ -11,6 +11,7 @@ class Property extends Model
         'house_owner_id', 'township_id', 'property_type_id', 'transaction_id', 'content',
         'address', 'bedRoom', 'bathRoom', 'area', 'price', 'status', 'description', 'room', 'images'
     ];
+    
 
     public function houseOwner()
     {
@@ -45,20 +46,5 @@ class Property extends Model
     
     use HasFactory;
 
-    protected $fillable = [
-        'property_type_id',
-        'house_owner_id',
-        'township_id',
-        'selection_type',
-        'content',
-        'address',
-        'bedroom',
-        'bathroom',
-        'area',
-        'price',
-        'status',
-        'description',
-        'room',
-        'image',
-    ];
+    
 }

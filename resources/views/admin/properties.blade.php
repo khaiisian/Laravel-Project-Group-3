@@ -18,8 +18,9 @@
         <div class="card mb-4">
             <div class="card-header">Add New Property</div>
             <div class="card-body">
-                <form action="{{ route('admin.storeProperty') }}" method="POST" enctype="multipart/form-data">
+                <form action="/admin/properties" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="mb-3">
                         <label for="property_type_id" class="form-label">Property Type ID</label>
                         <input type="text" class="form-control" id="property_type_id" name="property_type_id" required>
@@ -115,10 +116,6 @@
                     @foreach ($properties as $property)
                         <tr>
                             <td>{{ $property->id }}</td>
-<<<<<<< HEAD
-                            <td>{{ $property->type }}</td>
-                            <td>${{ number_format($property->price, 2) }}</td>
-=======
                             <td>{{ $property->property_type_id }}</td>
                             <td>{{ $property->house_owner_id }}</td>
                             <td>{{ $property->township_id }}</td>
@@ -130,7 +127,6 @@
                             <td>{{ $property->area }}</td>
                             <td>{{ number_format($property->price, 2) }}</td>
                             <td>{{ $property->status }}</td>
->>>>>>> b5f61cd21706619ebef8c8dd917117abb5604e19
                             <td>{{ $property->description }}</td>
                             <td><img src="{{ asset('storage/' . $property->image) }}" alt="Property Image" style="width: 50px;"></td>
                             <td>{{ $property->created_at }}</td>

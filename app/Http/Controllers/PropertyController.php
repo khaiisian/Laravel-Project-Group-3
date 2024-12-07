@@ -162,11 +162,6 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
-<<<<<<< HEAD
-    
-
-}
-=======
     public function goToSelectionType(Request $request)
     {
         // Get the selection type ID from the request
@@ -190,4 +185,3 @@ class PropertyController extends Controller
     
     
 }
->>>>>>> b5f61cd21706619ebef8c8dd917117abb5604e19
