@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
     Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
+    Route::get('/view',[UserPostController::class,'show'])->name('userpost.view');
 });
 
 require __DIR__ . '/auth.php';

@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserPostRequest;
 use App\Models\Region;
 use App\Models\PropertyType;
 use App\Models\Township;
+use App\Models\EndUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -45,4 +46,17 @@ class UserPostController extends Controller
 
         return redirect()->back()->with('success', 'Post submitted successfully!');
     }
+    public function show()
+    {
+        // Step 1: Get all posts data with related information
+        $posts = UserPost::with([
+            'enduser.user',        // Fetch user data through enduser relationship
+            'region',              // Fetch region data
+            'township'             // Fetch township data
+        ])->get();
+
+        // Step 2: Return the data to the view
+        return view('user_side.view', compact('posts'));
+    }
+
 }

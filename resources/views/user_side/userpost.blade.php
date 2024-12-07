@@ -81,8 +81,9 @@
                 </div>
             </div>
         </div>
+        @include('user_side.user_footer')
     </main>
-
+    
 </body>
 
 </html>
