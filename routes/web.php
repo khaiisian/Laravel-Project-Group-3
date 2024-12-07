@@ -79,12 +79,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
     Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
-<<<<<<< HEAD
     Route::get('/view',[UserPostController::class,'show'])->name('userpost.view');
-=======
-    Route::post('/feedback/submit', [FeedbackController::class, 'store'])->name('feedback.submit')->middleware('auth');
-
->>>>>>> 85ca24d41a73291a7b5f777e9606ca9259e37b12
 });
 
 
