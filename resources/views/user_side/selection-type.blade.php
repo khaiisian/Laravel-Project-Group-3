@@ -69,24 +69,38 @@
         transform: scale3d(1, 1, 1);
     }
 </style>
-<body>
+
+
     @include('user_side.user_header')
+
     <div class="container mt-2">
+        <h1 class="mb-4">
+            @if ($selectionTypeId == 1)
+            Properties To Sell
+            @elseif ($selectionTypeId == 2)
+            Properties To Rent
+            @else
+            All Properties
+            @endif
+        </h1>
+        @if ($properties->isEmpty())
+        <p>No properties found for this selection type.</p>
+        @else
         <div class="row">
             @foreach ($properties as $property)
             <div class="col-md-3 col-sm-6">
                 <div class="card card-block p-4">
                     <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
-                    
+
                     <!-- Handle both string and collection cases for images -->
-                    @if(is_iterable($property->images)) 
-                        @if($property->images->isNotEmpty())
-                            <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" />
-                        @endif
+                    @if(is_iterable($property->images))
+                    @if($property->images->isNotEmpty())
+                    <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" />
+                    @endif
                     @elseif(is_string($property->images))
-                        <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
+                    <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" />
                     @else
-                        <p>No images available</p>
+                    <p>No images available</p>
                     @endif
 
                     <p class="card-text mt-2"><strong>House Owner:</strong>{{ $property->houseOwner->user->name ?? 'Owner Unknown' }}</p>
@@ -99,6 +113,8 @@
             @endforeach
         </div>
     </div>
+    @endif
+    </div>
 
+    </body>
     @include('user_side.user_footer')
-</body>

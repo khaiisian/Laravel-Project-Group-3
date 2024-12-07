@@ -10,59 +10,57 @@
 
 </head>
 <style>
-            .post-card {
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                overflow: hidden;
-                transition: box-shadow 0.3s ease-in-out;
-            }
+    .post-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease-in-out;
+    }
 
-            .post-card:hover {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            }
+    .post-card:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-            .post-card .card-body {
-                padding: 20px;
-            }
+    .post-card .card-body {
+        padding: 20px;
+    }
 
-            .post-card .user-info {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                margin-bottom: 15px;
-            }
+    .post-card .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
 
-            .post-card .user-info h5 {
-                margin: 0;
-                font-weight: bold;
-                font-size: 18px;
-            }
+    .post-card .user-info h5 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 18px;
+    }
 
-            .post-card .user-info small {
-                font-size: 12px;
-                color: #888;
-            }
+    .post-card .user-info small {
+        font-size: 12px;
+        color: #888;
+    }
 
-            .post-card .post-details p {
-                margin-bottom: 10px;
-            }
+    .post-card .post-details p {
+        margin-bottom: 10px;
+    }
 
-            .post-card h4 {
-                font-size: 16px;
-                margin-top: 20px;
-            }
+    .post-card h4 {
+        font-size: 16px;
+        margin-top: 20px;
+    }
 
-            .post-card small {
-                display: block;
-                color: #555;
-            }
-        </style>
+    .post-card small {
+        display: block;
+        color: #555;
+    }
+</style>
 
 <body>
     @include('user_side.user_header')
     <main class="container mb-3">
-
-    
 
         <div class="container mt-4">
             @foreach ($posts as $post)
@@ -88,7 +86,7 @@
                         <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
                     </div>
 
-                    <!-- Contact Information -->
+                        <!-- Contact Information -->
                     <h4>Contact</h4>
                     @if ($post->user_info)
                     <small>Phone: {{ $post->user_info->phNo }}</small>
@@ -101,9 +99,9 @@
             @endforeach
         </div>
 
-        @include('user_side.user_footer')
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+@include('user_side.user_footer')
 
 </html>

@@ -43,8 +43,8 @@
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
             <a class="nav-item nav-link link-body-emphasis" href="{{route('home')}}">Home</a>
-            <a class="nav-item nav-link link-body-emphasis" href="{{route('user.to_sell')}}">To Sell</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">To Rent</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 1])}}">To Sell</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 2])}}">To Rent</a>
             <a class="nav-item nav-link link-body-emphasis" href="view">View</a>
             <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>

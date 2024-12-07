@@ -26,7 +26,7 @@ Route::get('/', [PropertyController::class, 'showFilter'])->name('home');
 Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
 Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('user.feedback');
-Route::get('/tosell', [PropertyController::class, 'goToSell'])->name('user.to_sell');
+Route::get('/selection', [PropertyController::class, 'goToSelectionType'])->name('user.selection-type');
 
 Route::get('contact', function () {
     return view('user_side.contactus');
