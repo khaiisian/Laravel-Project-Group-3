@@ -27,6 +27,7 @@ Route::post('/user_home/filter', [PropertyController::class, 'filterProperties']
 Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('user.feedback');
 Route::get('/tosell', [PropertyController::class, 'goToSell'])->name('user.to_sell');
+
 Route::get('contact', function () {
     return view('user_side.contactus');
 });

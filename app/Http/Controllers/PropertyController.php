@@ -10,6 +10,7 @@ use App\Models\Township;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PropertyImage;
+
 class PropertyController extends Controller
 {
     public function showFilter()
@@ -130,7 +131,7 @@ class PropertyController extends Controller
             foreach ($request->file('images') as $image) {
                 $imageName = time() . '_' . $image->getClientOriginalName();
                 $image->move(public_path('images'), $imageName);
-                
+
                 // Save image in PropertyImage model
                 PropertyImage::create([
                     'property_id' => $property->id,
@@ -161,7 +162,10 @@ class PropertyController extends Controller
         // Pass the properties to the view
         return view('admin.properties', compact('properties'));
     }
-    public function goToSell(Request $request){
-        return view('user_side.to_sell');
+    public function goToSell(Request $request)
+
+    {
+        $properties = Property::with(['houseOwner', 'township', 'propertyType', 'images'])->get();
+        return view('user_side.to_sell', compact('properties'));
     }
 }

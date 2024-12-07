@@ -11,7 +11,7 @@ class Property extends Model
 
     public function houseOwner()
     {
-        return $this->belongsTo(HouseOwner::class);
+        return $this->belongsTo(HouseOwner::class , 'house_owner_id');
     }
 
     public function township()
