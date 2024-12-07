@@ -16,25 +16,17 @@ use App\Http\Controllers\FeedbackController;
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
 
 
+// Register ajax route
+Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 
-Route::get('user_header', function () {
-    return view('user_side.user_header');
-});
-Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
+
+
+// Route able access before login
+Route::get('/', [PropertyController::class, 'showFilter'])->name('before.home');
 Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
 Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
-
-Route::get('owner_header', function () {
-    return view('owner_side.owner_header');
-});
 Route::get('feedback', function () {
     return view('user_side.feedback');
-});
-Route::get('profile', function () {
-    return view('user_side.profile');
-});
-Route::get('userprofile', function () {
-    return view('user.userprofile');
 });
 Route::get('contact', function () {
     return view('user_side.contactus');
@@ -43,7 +35,20 @@ Route::get('user_post', function () {
     return view('user_side.userpost');
 });
 
-Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
+// Route able to access after login
+Route::middleware('auth')->group(function () {
+    Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
+    Route::get('owner_header', function () {
+        return view('owner_side.owner_header');
+    });
+    Route::get('profile', function () {
+        return view('user_side.profile');
+    });
+    Route::get('userprofile', function () {
+        return view('user.userprofile');
+    });
+});
+
 
 
 Route::get('/property/create', [PropertyController::class, 'create'])->name('property.create');
@@ -60,9 +65,6 @@ Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -81,5 +83,16 @@ Route::middleware('auth')->group(function () {
 
 });
 
-require __DIR__ . '/auth.php';
 
+
+
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('user_header', function () {
+//     return view('user_side.user_header');
+// });
+require __DIR__ . '/auth.php';
