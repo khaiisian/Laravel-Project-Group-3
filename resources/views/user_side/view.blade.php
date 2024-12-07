@@ -54,7 +54,7 @@
                     <!-- Post Details -->
                     <p><strong>Content:</strong> {{ $post->content }}</p>
                     <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
-                    <h4>Contact</h4>
+                    <h5>Contact</h5>
                     <small class="text-muted">Phone: {{ $post->user_info->phNo }}</small><br>
                     <small class="text-muted">Address: {{ $post->user_info->address }}</small><br>
                 </div>
