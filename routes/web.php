@@ -78,10 +78,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/user_home', [PropertyController::class, 'showFilter'])->name('user.home');
     Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
-    Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
     Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
     Route::get('/view',[UserPostController::class,'show'])->name('userpost.view');
+    Route::get('/detail/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
+    Route::post('/detail/contact', [TransactionController::class, 'contactOwner'])->name('user.contact.owner');
+
+
+
 });
 
 
