@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
