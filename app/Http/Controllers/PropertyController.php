@@ -75,6 +75,8 @@ class PropertyController extends Controller
         // Pass the property data to the detail view
         return view('user_side.detail', compact('property'));
     }
+
+    
     public function create()
     {
         // Check user role

@@ -84,8 +84,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/detail/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::post('/detail/contact', [TransactionController::class, 'contactOwner'])->name('user.contact.owner');
 
-
-
 });
 
 
