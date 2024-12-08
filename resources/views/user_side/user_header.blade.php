@@ -48,10 +48,18 @@
             <a class="nav-item nav-link link-body-emphasis" href="view">View</a>
             <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
-            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i
-                    class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
-            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i>
-                Profile</a>
+            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
+            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-solid fa-bell"></i></a>
+            <a class="nav-item nav-link link-body-emphasis" href="#"
+                @if(auth()->user() && auth()->user()->role == 'owner')
+                style="display:block;"
+                @else
+                style="display:none;"
+                @endif>
+                <i class="fa-solid fa-bell"></i>
+            </a>
+
         </nav>
     </div>
 </div>

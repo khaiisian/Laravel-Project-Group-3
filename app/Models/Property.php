@@ -8,10 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     protected $fillable = [
-        'house_owner_id', 'township_id', 'property_type_id', 'selection_type_id', 'content',
-        'address', 'bedRoom', 'bathRoom', 'area', 'price', 'status', 'description', 'room', 'images'
+        'house_owner_id',
+        'township_id',
+        'property_type_id',
+        'selection_type_id',
+        'content',
+        'requirement',
+        'address',
+        'bedRoom',
+        'bathRoom',
+        'area',
+        'price',
+        'status',
+        'description',
+        'room',
+        'images'
     ];
-    
+
 
     public function houseOwner()
     {
@@ -42,9 +55,9 @@ class Property extends Model
     {
         return $this->hasMany(PropertyImage::class); // Replace `Image` with your actual image model name
     }
-    
-    
+
+
     use HasFactory;
 
-    
+
 }

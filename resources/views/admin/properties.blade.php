@@ -24,6 +24,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Property Type</th>
+                        <th>House Owner</th>
                         <th>Price</th>
                         <th>Description</th>
                         <th>Image</th>
