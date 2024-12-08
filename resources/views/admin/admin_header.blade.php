@@ -3,10 +3,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href='public/blog.css'>
 <link rel="stylesheet" href='public/blog.rtl.css'>
-<title>Home Link</title>
 
 
-<div class="container-fluid">
+<div class="container">
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
@@ -28,38 +27,28 @@
                     </svg>
                 </a>
                 @auth
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('logout') }}" class="m-0">
                     @csrf
                     <button type="submit" class="btn btn-sm btn-outline-secondary">Log Out</button>
                 </form>
                 @endauth
-                @guest
-                <a class="btn btn-sm btn-outline-secondary" href="{{ route('register') }}">Sign Up</a>
-                @endguest
             </div>
         </div>
     </header>
 
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
-            <a class="nav-item nav-link link-body-emphasis" href="{{route('home')}}">Home</a>
-            <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 1])}}">To Sell</a>
-            <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 2])}}">To Rent</a>
-            <a class="nav-item nav-link link-body-emphasis" href="view">View</a>
-            <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
-            <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
-            <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
-            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-solid fa-bell"></i></a>
-            <a class="nav-item nav-link link-body-emphasis" href="#"
-                @if(auth()->user() && auth()->user()->role == 'owner')
-                style="display:block;"
-                @else
-                style="display:none;"
-                @endif>
-                <i class="fa-solid fa-bell"></i>
-            </a>
-
+            <a class="nav-item nav-link link-body-emphasis active" href="#">Admin Dashboard</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Users</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Properties</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Property Type</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Region</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Selection Types</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Townships</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">Transaction</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#">User Posts</a>
+            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-comment icon_size"></i></a>
+            <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-user"></i></a>
         </nav>
     </div>
 </div>

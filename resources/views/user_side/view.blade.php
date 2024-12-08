@@ -86,14 +86,6 @@
                         <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
                     </div>
 
-<<<<<<< HEAD
-                    <!-- Post Details -->
-                    <p><strong>Content:</strong> {{ $post->content }}</p>
-                    <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
-                    <h5>Contact</h5>
-                    <small class="text-muted">Phone: {{ $post->user_info->phNo }}</small><br>
-                    <small class="text-muted">Address: {{ $post->user_info->address }}</small><br>
-=======
                         <!-- Contact Information -->
                     <h4>Contact</h4>
                     @if ($post->user_info)
@@ -102,7 +94,6 @@
                     @else
                     <small class="text-danger">Contact information not available</small>
                     @endif
->>>>>>> 27397a896513c72ee74149a8fa1aee948fb91e43
                 </div>
             </div>
             @endforeach

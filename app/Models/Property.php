@@ -8,21 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     protected $fillable = [
-        'house_owner_id',
-        'township_id',
-        'property_type_id',
-        'transaction_id',
-        'content',
-        'selection_type_id',
-        'address',
-        'bedRoom',
-        'bathRoom',
-        'area',
-        'price',
-        'status',
-        'description',
-        'room',
-        'images'
+        'house_owner_id', 'township_id', 'property_type_id', 'transaction_id', 'content','selection_type_id',
+        'address', 'bedRoom', 'bathRoom', 'area', 'price', 'status', 'description', 'room', 'images'
     ];
 
 
