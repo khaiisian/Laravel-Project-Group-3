@@ -30,14 +30,14 @@ class PropertyController extends Controller
         $properties = Property::all();
 
         return view('user_side.user_home', compact(
-            'propertyTypes', 
-            'regions', 
-            'townships', 
-            'properties', 
-            'selectedPropertyTypeId', 
-            'selectedRegionId', 
-            'selectedTownshipId', 
-            'forSaleOrRent', 
+            'propertyTypes',
+            'regions',
+            'townships',
+            'properties',
+            'selectedPropertyTypeId',
+            'selectedRegionId',
+            'selectedTownshipId',
+            'forSaleOrRent',
             'forSaleOrRentOptions'
         ));
     }
@@ -72,14 +72,14 @@ class PropertyController extends Controller
         ];
 
         return view('user_side.user_home', compact(
-            'propertyTypes', 
-            'regions', 
-            'townships', 
-            'properties', 
-            'selectedPropertyTypeId', 
-            'selectedRegionId', 
-            'selectedTownshipId', 
-            'forSaleOrRent', 
+            'propertyTypes',
+            'regions',
+            'townships',
+            'properties',
+            'selectedPropertyTypeId',
+            'selectedRegionId',
+            'selectedTownshipId',
+            'forSaleOrRent',
             'forSaleOrRentOptions'
         ));
     }
@@ -104,56 +104,6 @@ class PropertyController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        // Validate the request data
-        $request->validate([
-            'property_type_id' => 'required|exists:property_types,id',
-            'house_owner_id' => 'required|exists:house_owners,id',
-            'township_id' => 'required|exists:townships,id',
-            'selection_type_id' => 'required|exists:selection_types,id',
-            'content' => 'required|string',
-            'address' => 'required|string',
-            'bedRoom' => 'required|integer',
-            'bathRoom' => 'required|integer',
-            'area' => 'required|integer',
-            'price' => 'required|numeric',
-            'status' => 'required|string',
-            'description' => 'required|string',
-            'room' => 'required|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        // Handle image upload
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $imageName);
-            $imagePath = 'images/' . $imageName;
-        }
-
-        // Create a new property record
-        Property::create([
-            'property_type_id' => $request->property_type_id,
-            'house_owner_id' => $request->house_owner_id,
-            'township_id' => $request->township_id,
-            'selection_type_id' => $request->selection_type_id,
-            'content' => $request->content,
-            'address' => $request->address,
-            'bedRoom' => $request->bedRoom,
-            'bathRoom' => $request->bathRoom,
-            'area' => $request->area,
-            'price' => $request->price,
-            'status' => $request->status,
-            'description' => $request->description,
-            'room' => $request->room,
-            'image' => $imagePath,
-        ]);
-
-        // Redirect with success message
-        return redirect()->route('owner.create')->with('success', 'Property created successfully!');
-    }
 
     public function goToSelectionType(Request $request)
     {
@@ -167,5 +117,4 @@ class PropertyController extends Controller
 
         return view('user_side.selection-type', compact('properties', 'selectionTypeId'));
     }
-
 }

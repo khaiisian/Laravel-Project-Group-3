@@ -40,10 +40,10 @@ class PropertyStoreController extends Controller
 
     // Handle image upload if exists
     $imagePath = null;
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('images'), $imageName);
+    if ($request->hasFile('images')) {
+        $images = $request->file('images');
+        $imageName = time() . '_' . $images->getClientOriginalName();
+        $images->move(public_path('images'), $imageName);
         $imagePath = 'images/' . $imageName;
     }
 
@@ -55,15 +55,15 @@ class PropertyStoreController extends Controller
     $property->selection_type_id = $validated['selection_type_id'];
     $property->content = $validated['content'];
     $property->address = $validated['address'];
-    $property->bedRoom = $validated['bedroom'];  // Ensure the name matches the database column
-    $property->bathRoom = $validated['bathroom']; // Ensure the name matches the database column
+    $property->bedRoom = $validated['bedroom'];  
+    $property->bathRoom = $validated['bathroom']; 
     $property->area = $validated['area'];
     $property->price = $validated['price'];
     $property->status = $validated['status'];
     $property->description = $validated['description'];
     $property->room = $validated['room'];
-    $property->image = $imagePath;
-    $property->save(); // Save the new property to the database
+    $property->images = $imagePath;
+    $property->save(); 
 
     return redirect()->route('user_side.owner-post')->with('success', 'Property created successfully!');
 }

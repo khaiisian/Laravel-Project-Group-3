@@ -12,20 +12,27 @@
     <main class="container mb-3">
         <div class="container my-5">
             <h1 class="text-center mb-4">What kind of living style do you want?</h1>
-            <div class="alert alert-success" style="display: none;">
-                <!-- Success message -->
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
+            @endif
 
-            <div class="alert alert-danger" style="display: none;">
+            @if ($errors->any())
+            <div class="alert alert-danger">
                 <ul>
-                    <!-- Error messages -->
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
                 </ul>
             </div>
+            @endif
+
 
             <div class="card mb-4">
                 <div class="card-header">Add New Property</div>
                 <div class="card-body">
-                    <form action="{{ route('owner-post') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user_side.owner-post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-3">
@@ -33,19 +40,22 @@
                             <select class="form-control" id="property_type_id" name="property_type_id" required>
                                 <option value="" disabled selected>Select Property Type</option>
                                 @foreach($ptType as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                    <!-- Assuming 'name' is the column you want to show -->
+                                <option value="{{ $type->id }}">{{ $type->name }}</option>
                                 @endforeach
                             </select>
+                            @error('property_type_id')
+                            <small class="text-danger">{{ $message }}</small>
+                            @enderror
                         </div>
+
 
                         <div class="mb-3">
                             <label for="township_id" class="form-label">Township</label>
                             <select class="form-control" id="township_id" name="township_id" required>
                                 <option value="" disabled selected>Select Township</option>
                                 @foreach($township as $town)
-                                    <option value="{{ $town->id }}">{{ $town->name }}</option>
-                                    <!-- Assuming 'name' is the column you want to show -->
+                                <option value="{{ $town->id }}">{{ $town->name }}</option>
+                                <!-- Assuming 'name' is the column you want to show -->
                                 @endforeach
                             </select>
                         </div>
@@ -55,8 +65,8 @@
                             <select class="form-control" id="selection_type_id" name="selection_type_id" required>
                                 <option value="" disabled selected>Select Selection Type</option>
                                 @foreach($selectionType as $selection)
-                                    <option value="{{ $selection->id }}">{{ $selection->name }}</option>
-                                    <!-- Assuming 'name' is the column you want to show -->
+                                <option value="{{ $selection->id }}">{{ $selection->name }}</option>
+                                <!-- Assuming 'name' is the column you want to show -->
                                 @endforeach
                             </select>
                         </div>
@@ -73,12 +83,12 @@
 
                         <div class="mb-3">
                             <label for="bedroom" class="form-label">Bedroom</label>
-                            <input type="number" class="form-control" id="bedroom" name="bedRoom" required>
+                            <input type="number" class="form-control" id="bedroom" name="bedroom" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="bathroom" class="form-label">Bathroom</label>
-                            <input type="number" class="form-control" id="bathroom" name="bathRoom" required>
+                            <input type="number" class="form-control" id="bathroom" name="bathroom" required>
                         </div>
 
                         <div class="mb-3">
@@ -108,8 +118,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">
+                            <label for="images" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="images" name="images">
                         </div>
 
                         <div class="mb-3">

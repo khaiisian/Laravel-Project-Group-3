@@ -94,10 +94,8 @@
                     <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
 
                     <!-- Display Property Image -->
-                    @if(is_iterable($property->images) && $property->images->isNotEmpty())
-                    <img src="{{ asset('storage/' . $property->images->first()->image_path) }}" alt="Property Image" class="card-img-top" />
-                    @elseif(is_string($property->images))
-                    <img src="{{ asset('storage/' . $property->images) }}" alt="Property Image" class="card-img-top" />
+                    @if(!empty($property->images))
+                    <img src="{{ asset('' . $property->images) }}" alt="Property Image" class="card-img-top" />
                     @else
                     <img src="https://via.placeholder.com/150" alt="No Image Available" class="card-img-top" />
                     @endif
@@ -112,8 +110,8 @@
                 </div>
             </a>
         </div>
-
         @endforeach
+
     </div>
 </div>
 @endif
