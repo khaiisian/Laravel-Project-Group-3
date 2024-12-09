@@ -22,7 +22,7 @@ class Property extends Model
         'status',
         'description',
         'room',
-        'images'
+        'image_id'
     ];
 
 
@@ -50,13 +50,6 @@ class Property extends Model
     {
         return $this->hasMany(Transaction::class);
     }
-
-    public function images()
-    {
-        return $this->hasMany(PropertyImage::class); // Replace `Image` with your actual image model name
-    }
-
-
     use HasFactory;
 
 

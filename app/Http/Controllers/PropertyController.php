@@ -9,7 +9,6 @@ use App\Models\Region;
 use App\Models\Township;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use App\Models\PropertyImage;
 
 class PropertyController extends Controller
 {
@@ -30,24 +29,31 @@ class PropertyController extends Controller
         $townships = $selectedRegionId ? Township::where('region_id', $selectedRegionId)->get() : collect();
         $properties = Property::all();
 
-        return view('user_side.user_home', compact('propertyTypes', 'regions', 'townships', 'properties', 'selectedPropertyTypeId', 'selectedRegionId', 'selectedTownshipId', 'forSaleOrRent', 'forSaleOrRentOptions'));
+        return view('user_side.user_home', compact(
+            'propertyTypes', 
+            'regions', 
+            'townships', 
+            'properties', 
+            'selectedPropertyTypeId', 
+            'selectedRegionId', 
+            'selectedTownshipId', 
+            'forSaleOrRent', 
+            'forSaleOrRentOptions'
+        ));
     }
 
     public function filterProperties(Request $request)
     {
-        // Save user inputs in session
         Session::put('selectedPropertyTypeId', $request->property_type);
         Session::put('selectedRegionId', $request->region);
         Session::put('selectedTownshipId', $request->township);
         Session::put('forSaleOrRent', $request->for_sale_or_rent);
 
-        // Retrieve inputs for filtering properties
         $selectedPropertyTypeId = $request->property_type;
         $selectedRegionId = $request->region;
         $selectedTownshipId = $request->township;
         $forSaleOrRent = $request->for_sale_or_rent;
 
-        // Filter properties based on user inputs
         $properties = Property::where(function ($query) use ($selectedPropertyTypeId, $selectedTownshipId, $forSaleOrRent) {
             if ($selectedPropertyTypeId)
                 $query->where('property_type_id', $selectedPropertyTypeId);
@@ -57,7 +63,6 @@ class PropertyController extends Controller
                 $query->where('selection_type_id', $forSaleOrRent);
         })->get();
 
-        // Reload dependent data
         $propertyTypes = PropertyType::all();
         $regions = Region::all();
         $townships = Township::where('region_id', $selectedRegionId)->get();
@@ -66,26 +71,34 @@ class PropertyController extends Controller
             2 => 'For Sell'
         ];
 
-        return view('user_side.user_home', compact('propertyTypes', 'regions', 'townships', 'properties', 'selectedPropertyTypeId', 'selectedRegionId', 'selectedTownshipId', 'forSaleOrRent', 'forSaleOrRentOptions'));
+        return view('user_side.user_home', compact(
+            'propertyTypes', 
+            'regions', 
+            'townships', 
+            'properties', 
+            'selectedPropertyTypeId', 
+            'selectedRegionId', 
+            'selectedTownshipId', 
+            'forSaleOrRent', 
+            'forSaleOrRentOptions'
+        ));
     }
+
     public function showPropertyDetails($id)
     {
         $property = Property::findOrFail($id);
 
-        // Pass the property data to the detail view
         return view('user_side.detail', compact('property'));
     }
 
-    
     public function create()
     {
-        // Check user role
         $user = Auth::user();
 
-        if ($user->role === 2) { // Owner
-            return view('property.create'); // Show create property form
-        } elseif ($user->role === 1) { // Renter
-            return redirect()->route('userpost'); // Redirect to user posts
+        if ($user->role === 2) {
+            return view('property.create');
+        } elseif ($user->role === 1) {
+            return redirect()->route('userpost');
         } else {
             return abort(403, 'Unauthorized action.');
         }
@@ -93,7 +106,7 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the incoming request
+        // Validate the request data
         $request->validate([
             'property_type_id' => 'required|exists:property_types,id',
             'house_owner_id' => 'required|exists:house_owners,id',
@@ -108,11 +121,20 @@ class PropertyController extends Controller
             'status' => 'required|string',
             'description' => 'required|string',
             'room' => 'required|integer',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Image validation
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Create property
-        $property = Property::create([
+        // Handle image upload
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+            $imagePath = 'images/' . $imageName;
+        }
+
+        // Create a new property record
+        Property::create([
             'property_type_id' => $request->property_type_id,
             'house_owner_id' => $request->house_owner_id,
             'township_id' => $request->township_id,
@@ -126,64 +148,24 @@ class PropertyController extends Controller
             'status' => $request->status,
             'description' => $request->description,
             'room' => $request->room,
+            'image' => $imagePath,
         ]);
 
-        // Handle image uploads
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                $image->move(public_path('images'), $imageName);
-
-                // Save image in PropertyImage model
-                PropertyImage::create([
-                    'property_id' => $property->id,
-                    'image_path' => 'images/' . $imageName,
-                ]);
-            }
-        }
-
-        return redirect()->route('user_side.create')->with('success', 'Property created successfully!');
+        // Redirect with success message
+        return redirect()->route('owner.create')->with('success', 'Property created successfully!');
     }
 
-    public function userPost()
-    {
-        // Logic for user posts
-        return view('property.userpost'); // Display user posts
-    }
-
-    public function userFilter()
-    {
-        // Logic for filtering properties
-        return view('user_side.userfilter'); // Display filtered properties
-    }
-    public function showProperties()
-    {
-        // Retrieve all properties
-        $properties = Property::get();  // eager loading the relationships
-
-        // Pass the properties to the view
-        return view('admin.properties', compact('properties'));
-    }
     public function goToSelectionType(Request $request)
     {
-        // Get the selection type ID from the request
         $selectionTypeId = $request->get('id');
-    
-        // Fetch properties that match the selection type, including related data
-        $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType', 'images'])
+
+        $properties = Property::with(['houseOwner.user', 'township', 'propertyType', 'selectionType'])
             ->when($selectionTypeId, function ($query) use ($selectionTypeId) {
                 $query->where('selection_type_id', $selectionTypeId);
             })
             ->get();
-    
-        // Pass properties and selection type ID to the view
+
         return view('user_side.selection-type', compact('properties', 'selectionTypeId'));
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

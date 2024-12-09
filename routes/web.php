@@ -12,6 +12,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PropertyStoreController;
 
 
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
@@ -83,6 +84,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/view',[UserPostController::class,'show'])->name('userpost.view');
     Route::get('/detail/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::post('/detail/contact', [TransactionController::class, 'contactOwner'])->name('user.contact.owner');
+    // Route::get('/owner-post', [PropertyStoreController::class, 'create'])->name('owner.create');
+    Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('owner-post');
+    Route::get('/owner-post', [PropertyStoreController::class, 'show'])->name('owner.show');
 
 });
 

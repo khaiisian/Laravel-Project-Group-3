@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('description');
             $table->integer('room');
-            $table->string('images')->nullable();
+            $table->string('image');
             $table->timestamps();
 
             // Foreign keys with explicit names
@@ -42,6 +42,8 @@ return new class extends Migration
             $table->foreign('selection_type_id', 'fk_properties_selection_type')
                 ->references('id')->on('selection_types')
                 ->onDelete('cascade');
+
+            
         });
     }
 
