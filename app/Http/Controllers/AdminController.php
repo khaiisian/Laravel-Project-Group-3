@@ -13,7 +13,6 @@ class AdminController extends Controller
         $properties = Property::all(); // Fetch all properties
         return view('admin.properties', compact('properties'));
     }
-
-    // Store a new property
-    
 }
+
+    
