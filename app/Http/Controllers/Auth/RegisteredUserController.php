@@ -80,8 +80,8 @@ class RegisteredUserController extends Controller
         if ($user->role === 'renter') {
             return redirect(RouteServiceProvider::USERHOME);
         } elseif ($user->role === 'owner') {
-            return redirect(RouteServiceProvider::OWNERHOME);
-        }
+            return redirect(RouteServiceProvider::USERHOME);
+    }
 
         // return redirect(RouteServiceProvider::OWNERHOME);
     }
