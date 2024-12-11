@@ -33,5 +33,10 @@ class TransactionController extends Controller
         return redirect()->route('property.details', ['id' => $request->property_id])
             ->with('success', 'Your interest in the property has been recorded.');
     }
+    public function goToNotiPage(){
+        $transactions = Transaction::with(['enduser.user'])->get();
+
+        return view('user_side.owner-noti', compact('transactions'));   
+    }
     
 }
