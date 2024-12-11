@@ -41,15 +41,15 @@
                         <th>Image</th>
                         <th>Created At</th>
                         <th>Updated At</th>
-                </thead>    
+                </thead>
                 <tbody>
                     @foreach ($properties as $property)
                         <tr>
                             <td>{{ $property->id }}</td>
-                            <td>{{ $property->property_type_id }}</td>
-                            <td>{{ $property->house_owner_id }}</td>
-                            <td>{{ $property->township_id }}</td>
-                            <td>{{ $property->selection_type_id }}</td>
+                            <td>{{ $property->propertyType->name ?? 'N/A' }}</td>
+                            <td>{{ $property->houseOwner->name ?? 'N/A' }}</td>
+                            <td>{{ $property->township->name ?? 'N/A' }}</td>
+                            <td>{{ $property->selectionType->name ?? 'N/A' }}</td>
                             <td>{{ $property->content }}</td>
                             <td>{{ $property->address }}</td>
                             <td>{{ $property->bedRoom }}</td>
@@ -58,7 +58,8 @@
                             <td>{{ number_format($property->price, 2) }}</td>
                             <td>{{ $property->status }}</td>
                             <td>{{ $property->description }}</td>
-                            <td><img src="{{ asset('images/' . $property->image) }}" alt="Property Image" class="card-img-top" style="width:100%; height:auto;" /></td>
+                            <td><img src="{{ asset('images/' . $property->image) }}" alt="Property Image"
+                                    class="card-img-top" style="width:100%; height:auto;" /></td>
                             <td>{{ $property->created_at }}</td>
                             <td>{{ $property->updated_at }}</td>
                         </tr>

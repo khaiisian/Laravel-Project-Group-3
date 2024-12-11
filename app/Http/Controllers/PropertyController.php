@@ -119,8 +119,8 @@ class PropertyController extends Controller
     }
     public function showProperty()
     {
-        $properties = Property::get();
-        return view('admin.properties', compact('properties')); // Corrected view name
+        $properties = Property::with(['propertyType', 'houseOwner', 'township', 'selectionType'])->get();
+        return view('admin.properties', compact('properties'));
     }
 
 }
