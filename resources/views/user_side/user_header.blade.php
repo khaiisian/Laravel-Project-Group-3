@@ -46,7 +46,15 @@
             <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 1])}}">To Sell</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('user.selection-type',['id' => 2])}}">To Rent</a>
             <a class="nav-item nav-link link-body-emphasis" href="view">View</a>
+            @if(auth()->check())
+            @if(auth()->user()->role === 'renter')
             <a class="nav-item nav-link link-body-emphasis" href="user_post">Posting</a>
+            @elseif(auth()->user()->role === 'owner')
+            <a class="nav-item nav-link link-body-emphasis" href="{{ route('user_side.owner-post') }}">Posting</a>
+            @endif
+            @endif
+
+
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
             <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
             <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>

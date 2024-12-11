@@ -35,6 +35,7 @@
                     <form action="{{ route('user_side.owner-post') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
+                        <input type="hidden" name="house_owner_id" value="{{ Auth::user()->id }}">
                         <div class="mb-3">
                             <label for="property_type_id" class="form-label">Property Type</label>
                             <select class="form-control" id="property_type_id" name="property_type_id" required>
@@ -118,9 +119,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="images" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="images" name="images">
+                            <input type="file" name="images">
+                            <input type="submit" value="Upload">
                         </div>
+
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Add Property</button>

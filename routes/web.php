@@ -34,17 +34,20 @@ Route::get('/selection', [PropertyController::class, 'goToSelectionType'])->name
 Route::get('contact', function () {
     return view('user_side.contactus');
 });
-Route::get('user_post', function () {
-    return view('user_side.userpost');
-});
+Route::get('/user_post', function () {
+    return view('user_side.user-post');
+})->name('user_post');
+
+
+
 
 
 
 // Route able to access after login
 Route::middleware('auth')->group(function () {
-    Route::get('owner_header', function () {
-        return view('owner_side.owner_header');
-    });
+    // Route::get('owner_header', function () {
+    //     return view('owner_side.owner_header');
+    // });
     Route::get('profile', function () {
         return view('user_side.profile');
     });
