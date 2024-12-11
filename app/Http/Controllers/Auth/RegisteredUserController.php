@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\UserPost;
 
 class RegisteredUserController extends Controller
 {
@@ -81,8 +82,9 @@ class RegisteredUserController extends Controller
             return redirect(RouteServiceProvider::USERHOME);
         } elseif ($user->role === 'owner') {
             return redirect(RouteServiceProvider::USERHOME);
-    }
+        }
 
         // return redirect(RouteServiceProvider::OWNERHOME);
     }
+    
 }

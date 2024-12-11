@@ -57,7 +57,7 @@
 
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
             <a class="nav-item nav-link link-body-emphasis" href="feedback"><i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
-            <a class="nav-item nav-link link-body-emphasis" href="profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>
+            <a class="nav-item nav-link link-body-emphasis" href="user-profile"><i class="fa-regular fa-user mr-2"></i> Profile</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('user_side.owner-noti')}}"
                 @if(auth()->user() && auth()->user()->role == 'owner')
                 style="display:block;"

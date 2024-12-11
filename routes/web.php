@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TownshipController;
 use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\UserProfileController;
 use App\Models\UserPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
@@ -94,7 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('user_side.owner-post');
     Route::get('/owner-post', [PropertyStoreController::class, 'show'])->name('owner.show');
     Route::get('/owner-noti', [TransactionController::class, 'goToNotiPage'])->name('user_side.owner-noti');
-
+    Route::get('/user-profile', [UserProfileController::class, 'showProfileAndPosts'])->name('user.profile');
+    Route::delete('/user-post/{postId}', [UserProfileController::class, 'delete'])->name('user-post.delete');
 });
 
 
