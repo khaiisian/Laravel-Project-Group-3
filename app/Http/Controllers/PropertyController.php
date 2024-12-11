@@ -117,4 +117,10 @@ class PropertyController extends Controller
 
         return view('user_side.selection-type', compact('properties', 'selectionTypeId'));
     }
+    public function showProperty()
+    {
+        $properties = Property::get();
+        return view('admin.properties', compact('properties')); // Corrected view name
+    }
+
 }

@@ -64,15 +64,15 @@ Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])
 Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpost');
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
-Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
+// Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
 Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
 Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
 // route for store Property.
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/properties', [AdminController::class, 'index'])->name('admin.properties.index');
-    Route::post('/admin/properties', [AdminController::class, 'store'])->name('admin.storeProperty');
-});
+
+Route::get('/properties', [PropertyController::class, 'showProperty'])->name('admin.properties');
+
+
 
 
 Route::get('/dashboard', function () {
