@@ -28,7 +28,6 @@ Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 // Route able access before login
 Route::get('/', [PropertyController::class, 'showFilter'])->name('home');
 Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
-Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('user.feedback');
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('user.feedback.store');
 Route::get('/selection', [PropertyController::class, 'goToSelectionType'])->name('user.selection-type');
@@ -62,7 +61,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/property/create', [PropertyController::class, 'create'])->name('property.create');
 Route::post('/property/store', [PropertyController::class, 'store'])->name('property.store');
-Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpost');
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
