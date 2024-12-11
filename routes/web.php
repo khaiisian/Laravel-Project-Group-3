@@ -1,13 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyTypeController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TownshipController;
 use App\Http\Controllers\UserPostController;
-use App\Http\Controllers\UserProfileController;
 use App\Models\UserPost;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
@@ -28,6 +27,7 @@ Route::post('/getRegisterInfo', [AjaxController::class, 'getRegisterInfo']);
 // Route able access before login
 Route::get('/', [PropertyController::class, 'showFilter'])->name('home');
 Route::post('/user_home/filter', [PropertyController::class, 'filterProperties'])->name('user.home.filter');
+Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/feedback', [FeedbackController::class, 'index'])->name('user.feedback');
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('user.feedback.store');
 Route::get('/selection', [PropertyController::class, 'goToSelectionType'])->name('user.selection-type');
@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/property/create', [PropertyController::class, 'create'])->name('property.create');
 Route::post('/property/store', [PropertyController::class, 'store'])->name('property.store');
+Route::get('/property/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
 Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpost');
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
@@ -70,10 +71,6 @@ Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
 // route for store Property.
 
 
-Route::get('/properties', [PropertyController::class, 'showProperty'])->name('admin.properties');
-Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
-Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
-Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
 
 
 Route::get('/dashboard', function () {
@@ -94,8 +91,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('user_side.owner-post');
     Route::get('/owner-post', [PropertyStoreController::class, 'show'])->name('owner.show');
     Route::get('/owner-noti', [TransactionController::class, 'goToNotiPage'])->name('user_side.owner-noti');
-    Route::get('/user-profile', [UserProfileController::class, 'showProfileAndPosts'])->name('user.profile');
-    Route::delete('/user-post/{postId}', [UserProfileController::class, 'delete'])->name('user-post.delete');
+
+});
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/admin_home', [AdminHomeController::class, 'showDashboard'])->name(name: 'admin_home');
+    Route::get('/properties', [PropertyController::class, 'showProperty'])->name('admin.properties');
+    Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
+    Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
+    Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
 });
 
 
