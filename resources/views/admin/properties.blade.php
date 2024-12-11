@@ -49,17 +49,16 @@
                             <td>{{ $property->property_type_id }}</td>
                             <td>{{ $property->house_owner_id }}</td>
                             <td>{{ $property->township_id }}</td>
-                            <td>{{ $property->selection_type }}</td>
+                            <td>{{ $property->selection_type_id }}</td>
                             <td>{{ $property->content }}</td>
                             <td>{{ $property->address }}</td>
-                            <td>{{ $property->bedroom }}</td>
-                            <td>{{ $property->bathroom }}</td>
+                            <td>{{ $property->bedRoom }}</td>
+                            <td>{{ $property->bathRoom }}</td>
                             <td>{{ $property->area }}</td>
                             <td>{{ number_format($property->price, 2) }}</td>
                             <td>{{ $property->status }}</td>
                             <td>{{ $property->description }}</td>
-                            <td><img src="{{ asset('storage/' . $property->image) }}" alt="Property Image"
-                                    style="width: 50px;"></td>
+                            <td><img src="{{ asset('images/' . $property->image) }}" alt="Property Image" class="card-img-top" style="width:100%; height:auto;" /></td>
                             <td>{{ $property->created_at }}</td>
                             <td>{{ $property->updated_at }}</td>
                         </tr>
