@@ -24,29 +24,10 @@
         <div class="row">
             <!-- Image Carousel -->
             <div class="col-md-6">
-                <div id="propertyImagesCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @php
-                        $images = explode(',', $property->images); // Assuming images are comma-separated in the database
-                        @endphp
+            <div>
+    <img src="{{ asset('images/' . $property->image) }}" alt="Property Image" class="card-img-top" style="width:100%; height:auto;" />
+</div>
 
-                        @foreach ($images as $index => $image)
-                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                            <img src="{{ asset('' . $image) }}" alt="Property Image" class="card-img-top" />
-                        </div>
-                        @endforeach
-                    </div>
-
-                    <!-- Carousel controls -->
-                    <a class="carousel-control-prev" href="#propertyImagesCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#propertyImagesCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
             </div>
 
             <!-- Property Details -->

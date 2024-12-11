@@ -60,13 +60,25 @@ class PropertyStoreController extends Controller
         $property->room = $request->room;
     
         if ($request->hasFile('image')) {
-            $images = $request->file('image');
-            $imageName = uniqid() . '_' . time() . '.' . $images->getClientOriginalExtension();
-            $images->storeAs('image', $imageName);
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
         
-            $property->image = 'images/' . $imageName;
-            Log::info('Image path set successfully: ' . $property->image);
+            $images = $request->file('image');
+            
+            // Define the image name
+            $imageName = 'property_' . time() . '.' . $images->getClientOriginalExtension();
+        
+            // Move the image to the public/images directory
+            $images->move(public_path('images'), $imageName);
+        
+            // Save the image name in the database
+            $property->image = $imageName;
+        
+            Log::info('Image stored successfully in public/images: ' . $property->image);
         }
+        
+        
         
         if ($property->save()) {
             Log::info('Property saved:', $property->toArray());

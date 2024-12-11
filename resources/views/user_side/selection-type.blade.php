@@ -94,8 +94,9 @@
                     <h4 class="card-title text-end"><i class="fas fa-info-circle"></i></h4>
 
                     <!-- Display Property Image -->
-                    @if(!empty($property->images))
-                    <img src="{{ asset('' . $property->images) }}" alt="Property Image" class="card-img-top" />
+                    @if(!empty($property->image))
+                    <img src="{{ asset('images/' . $property->image) }}" alt="Property Image">
+
                     @else
                     <img src="https://via.placeholder.com/150" alt="No Image Available" class="card-img-top" />
                     @endif
