@@ -65,14 +65,15 @@ Route::get('/user/post', [PropertyController::class, 'userPost'])->name('userpos
 Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('userfilter');
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
 // Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
-Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
+// Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
 Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
 // route for store Property.
 
 
 Route::get('/properties', [PropertyController::class, 'showProperty'])->name('admin.properties');
-
-
+Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
+Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
+Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
 
 
 Route::get('/dashboard', function () {

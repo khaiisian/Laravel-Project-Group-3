@@ -40,8 +40,8 @@
         <nav class="nav nav-underline justify-content-between">
             <a class="nav-item nav-link link-body-emphasis active" href="#">Admin Dashboard</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Users</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Properties</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Property Type</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.properties')}}">Properties</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.property-types')}}">Property Type</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Region</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Selection Types</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Townships</a>
