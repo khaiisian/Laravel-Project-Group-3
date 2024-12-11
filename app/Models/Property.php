@@ -11,7 +11,7 @@ class Property extends Model
 protected $fillable = [
     'house_owner_id', 'property_type_id', 'township_id', 'selection_type_id',
     'content', 'address', 'bedroom', 'bathroom', 'area', 'price', 'status',
-    'description', 'room', 'images',
+    'description', 'room', 'image',
 ];
 
 

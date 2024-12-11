@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Living Style</title>
 </head>
 
 <body>
@@ -67,7 +66,6 @@
                                 <option value="" disabled selected>Select Selection Type</option>
                                 @foreach($selectionType as $selection)
                                 <option value="{{ $selection->id }}">{{ $selection->name }}</option>
-                                <!-- Assuming 'name' is the column you want to show -->
                                 @endforeach
                             </select>
                         </div>
@@ -119,10 +117,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="file" name="images">
+                            <input type="file" name="image">
                             <input type="submit" value="Upload">
                         </div>
-
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Add Property</button>

@@ -59,26 +59,21 @@ class PropertyStoreController extends Controller
         $property->description = $request->description;
         $property->room = $request->room;
     
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
+        if ($request->hasFile('image')) {
+            $images = $request->file('image');
             $imageName = uniqid() . '_' . time() . '.' . $images->getClientOriginalExtension();
-            $images->storeAs('images', $imageName);
+            $images->storeAs('image', $imageName);
         
-            $property->images = 'images/' . $imageName;
-            Log::info('Image path set successfully: ' . $property->images);
+            $property->image = 'images/' . $imageName;
+            Log::info('Image path set successfully: ' . $property->image);
         }
         
         if ($property->save()) {
-            Log::info('Property saved: ', $property->toArray());
+            Log::info('Property saved:', $property->toArray());
         } else {
             Log::error('Property save failed');
         }
-        
-        
-        
-    
-    
-    
+
         // Redirect or return response
         return redirect()->route('user_side.owner-post')->with('success', 'Property added successfully');
     }
