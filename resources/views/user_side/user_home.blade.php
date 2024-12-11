@@ -181,8 +181,8 @@
                             @foreach ($properties as $property)
                                 <div class="col-md-4">
                                     <div class="card mb-3">
-                                        <img src="{{ asset($property->image) }}" class="card-img-top"
-                                            alt="">
+                                    <img src="{{ asset('images/' . $property->image) }}" alt="Property Image">
+
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $property->content ?? 'Unknown Property' }}</h5>
                                             <p class="card-text">Price: {{ $property->price ?? 'N/A' }}</p>

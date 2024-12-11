@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/detail/contact', [TransactionController::class, 'contactOwner'])->name('user.contact.owner');
     Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('user_side.owner-post');
     Route::get('/owner-post', [PropertyStoreController::class, 'show'])->name('owner.show');
+    Route::get('/owner-noti', [TransactionController::class, 'goToNotiPage'])->name('user_side.owner-noti');
 
 });
 

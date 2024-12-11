@@ -60,46 +60,46 @@
 
 <body>
     @include('user_side.user_header')
-    <main class="container mb-3">
+        <main class="container mb-3">
 
-        <div class="container mt-4">
-            @foreach ($posts as $post)
-            <div class="card post-card mb-4">
-                <div class="card-body">
-                    <!-- User Information -->
-                    <div class="user-info mb-3">
-                        <div>
-                            @if ($post->user_info)
-                            <h5>{{ $post->user_info->user->name ?? 'Name not available' }}</h5>
-                            @else
-                            <h5 class="text-danger">User information not available</h5>
-                            @endif
-                            <small>{{ $post->created_at->diffForHumans() }}</small>
+            <div class="container mt-4">
+                @foreach ($posts as $post)
+                <div class="card post-card mb-4">
+                    <div class="card-body">
+                        <!-- User Information -->
+                        <div class="user-info mb-3">
+                            <div>
+                                @if ($post->user_info)
+                                <h5>{{ $post->user_info->user->name ?? 'Name not available' }}</h5>
+                                @else
+                                <h5 class="text-danger">User information not available</h5>
+                                @endif
+                                <small>{{ $post->created_at->diffForHumans() }}</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Region and Township Information -->
-                    <div class="post-details">
-                        <p><strong>Region:</strong> {{ $post->region_name }}</p>
-                        <p><strong>Township:</strong> {{ $post->township_name }}</p>
-                        <p><strong>Content:</strong> {{ $post->content }}</p>
-                        <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
-                    </div>
+                        <!-- Region and Township Information -->
+                        <div class="post-details">
+                            <p><strong>Region:</strong> {{ $post->region_name }}</p>
+                            <p><strong>Township:</strong> {{ $post->township_name }}</p>
+                            <p><strong>Content:</strong> {{ $post->content }}</p>
+                            <p><strong>Requirement:</strong> {{ $post->requirement }}</p>
+                        </div>
 
-                        <!-- Contact Information -->
-                    <h4>Contact</h4>
-                    @if ($post->user_info)
-                    <small>Phone: {{ $post->user_info->phNo }}</small>
-                    <small>Address: {{ $post->user_info->address }}</small>
-                    @else
-                    <small class="text-danger">Contact information not available</small>
-                    @endif
+                            <!-- Contact Information -->
+                        <h4>Contact</h4>
+                        @if ($post->user_info)
+                        <small>Phone: {{ $post->user_info->phNo }}</small>
+                        <small>Address: {{ $post->user_info->address }}</small>
+                        @else
+                        <small class="text-danger">Contact information not available</small>
+                        @endif
+                    </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
 
-    </main>
+        </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 @include('user_side.user_footer')
