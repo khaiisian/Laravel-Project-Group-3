@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet" href='public/blog.css'>
 <link rel="stylesheet" href='public/blog.rtl.css'>
-
+<title>Home Link</title>
 
 <div class="container">
     <header class="border-bottom lh-1 py-3">
@@ -39,18 +39,12 @@
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
             <a class="nav-item nav-link link-body-emphasis active" href="{{route('admin_home')}}">Admin Dashboard</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Users</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.renter-owner-list')}}">Users</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.properties')}}">Properties</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.property-types')}}">Property Type</a>
-<<<<<<< HEAD
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.region')}}">Region</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('selection-type.show')}}">Selection Types</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Townships</a>
-=======
-            <a class="nav-item nav-link link-body-emphasis" href="#">Region</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Selection Types</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.townships')}}">Townships</a>
->>>>>>> a86032883fd7ccaef30735eba092fee960eba80d
             <a class="nav-item nav-link link-body-emphasis" href="#">Transaction</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">User Posts</a>
             <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-comment icon_size"></i></a>

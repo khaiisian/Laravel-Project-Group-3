@@ -32,7 +32,7 @@
             <!-- Name Field -->
             <div class="mb-3">
                 <label for="name" class="form-label">Selection Type Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter selection type type name"
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter selection type name"
                     value="">
             </div>
 

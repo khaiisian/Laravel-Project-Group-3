@@ -15,8 +15,10 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PropertyStoreController;
 use App\Http\Controllers\SelectionTypeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\Property;
 use App\Models\Region;
+use Illuminate\Auth\Events\Registered;
 
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
 
@@ -113,6 +115,18 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/townships', [TownshipController::class, 'showTownships'])->name('admin.townships');
     Route::post('/townships', [TownshipController::class, 'store'])->name('townships.store');
     Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
+
+
+
+
+
+
+
+
+
+
+    Route::get('/admin/renter-owner-list', [RegisteredUserController::class, 'index'])->name('admin.renter-owner-list');
+Route::delete('/admin/ban-user/{id}', [RegisteredUserController::class, 'banUser'])->name('ban-user');
 
 });
 
