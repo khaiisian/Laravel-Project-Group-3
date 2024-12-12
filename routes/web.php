@@ -15,8 +15,10 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PropertyStoreController;
 use App\Http\Controllers\SelectionTypeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\Property;
 use App\Models\Region;
+use Illuminate\Auth\Events\Registered;
 
 Route::get('/admin/transactions', [TransactionController::class, 'show']);
 
@@ -118,6 +120,8 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/user-posts', [UserPostController::class, 'showUserPost'])->name('admin.user-posts');
 
     Route::get('/transactions', action: [TransactionController::class, 'show'])->name('admin.transactions');
+    Route::get('/admin/renter-owner-list', [RegisteredUserController::class, 'index'])->name('admin.renter-owner-list');
+Route::delete('/admin/ban-user/{id}', [RegisteredUserController::class, 'banUser'])->name('ban-user');
 });
 
 

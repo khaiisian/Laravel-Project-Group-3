@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\UserPost;
+use App\Models\EndUser;
+use App\Models\HouseOwner;
 
 class RegisteredUserController extends Controller
 {
@@ -86,5 +88,26 @@ class RegisteredUserController extends Controller
 
         // return redirect(RouteServiceProvider::OWNERHOME);
     }
+    public function index()
+    {
+        // Fetch renters (end users) with their associated user details
+        $renters = EndUser::with('user')->get();
+
+        // Fetch house owners with their associated user details
+        $owners = HouseOwner::with('user')->get();
+
+        return view('admin.users-list', compact('renters', 'owners'));
+    }
+    public function banUser($id)
+{
+    $user = User::find($id);
+
+    if ($user) {
+        $user->update(['role' => 'banned']); // Example: Change role to 'banned'
+    }
+
+    return redirect()->back()->with('success', 'User has been banned successfully.');
+}
+
     
 }
