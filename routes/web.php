@@ -100,6 +100,9 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
     Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
     Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
+    Route::get('/townships', [TownshipController::class, 'showTownships'])->name('admin.townships');
+    Route::post('/townships', [TownshipController::class, 'store'])->name('townships.store');
+    Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
 });
 
 

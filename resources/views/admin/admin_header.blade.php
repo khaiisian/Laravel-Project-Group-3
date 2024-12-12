@@ -44,7 +44,7 @@
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.property-types')}}">Property Type</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Region</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Selection Types</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Townships</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.townships')}}">Townships</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">Transaction</a>
             <a class="nav-item nav-link link-body-emphasis" href="#">User Posts</a>
             <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-comment icon_size"></i></a>
