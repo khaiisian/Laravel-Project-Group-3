@@ -93,7 +93,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('user_side.owner-post');
     Route::get('/owner-post', [PropertyStoreController::class, 'show'])->name('owner.show');
     Route::get('/owner-noti', [TransactionController::class, 'goToNotiPage'])->name('user_side.owner-noti');
-
 });
 
 Route::middleware(['role:admin'])->group(function () {
@@ -102,7 +101,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
     Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
     Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
-    
+
     Route::get('/region', [RegionController::class, 'goToRegion'])->name('admin.region');
     Route::post('region', [RegionController::class, 'store'])->name('region.store');
     Route::delete('region/{id}', [RegionController::class, 'destroy'])->name('region.destroy');
