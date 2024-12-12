@@ -10,7 +10,7 @@ class TransactionController extends Controller
     public function show()
 {
     // Eager load the 'enduser' and 'user' relationships
-    $transactions = Transaction::with(['enduser.user'])->get();
+    $transactions = Transaction::with(['enduser.user', 'property.houseOwner.user','property.township', 'property.propertyType', 'property.selectionType'])->get();
     return view('admin.transactions', compact('transactions'));
 }
 
