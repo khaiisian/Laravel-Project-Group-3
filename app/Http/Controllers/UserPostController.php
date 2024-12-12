@@ -95,25 +95,38 @@ class UserPostController extends Controller
 
     // Main function to display posts
     public function show()
-    {
-        // Get all posts
-        $posts = UserPost::all();
+{
+    // Get all posts with related user info
+    $posts = UserPost::all();
 
-        // Process each post
-        foreach ($posts as $post) {
-            // Attach user info
-            $post->user_info = $this->getUserInfo($post->end_user_id);
+    // Process each post
+    foreach ($posts as $post) {
+        // Attach user info
+        $post->user_info = $this->getUserInfo($post->end_user_id);
 
-            // Attach region name
-            $post->region_name = $this->getRegionName($post->region_id);
+        // Attach region name
+        $post->region_name = $this->getRegionName($post->region_id);
 
-            // Attach township name
-            $post->township_name = $this->getTownshipName($post->township_id);
-        }
-
-        // Return to the view
-        return view('user_side.view', compact('posts'));
+        // Attach township name
+        $post->township_name = $this->getTownshipName($post->township_id);
     }
+
+    // Return to the view
+    return view('user_side.view', compact('posts'));
+}
+public function destroy($id)
+{
+    $post = UserPost::findOrFail($id);
+
+    // Ensure only the creator can delete the post
+    if (auth()->id() === $post->user_info->users->id) {
+        $post->delete();
+        return redirect()->back()->with('success', 'Post deleted successfully.');
+    }
+
+    return redirect()->back()->with('error', 'Unauthorized action.');
+}
+
 
     public function showUserPost()
     {

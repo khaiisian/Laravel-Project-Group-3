@@ -89,6 +89,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user_post', [UserPostController::class, 'create'])->name('userpost.create');
     Route::post('/userpost/store', [UserPostController::class, 'store'])->name('userpost.store');
     Route::get('/view', [UserPostController::class, 'show'])->name('userpost.view');
+    Route::delete('/post/{id}/delete', [UserPostController::class, 'destroy'])->name('post.delete');
+
     Route::get('/detail/{id}', [PropertyController::class, 'showPropertyDetails'])->name('property.details');
     Route::post('/detail/contact', [TransactionController::class, 'contactOwner'])->name('user.contact.owner');
     Route::post('/owner-post', [PropertyStoreController::class, 'store'])->name('user_side.owner-post');
