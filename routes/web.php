@@ -116,24 +116,11 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/townships', [TownshipController::class, 'store'])->name('townships.store');
     Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-    Route::get('/admin/renter-owner-list', [RegisteredUserController::class, 'index'])->name('admin.renter-owner-list');
-Route::delete('/admin/ban-user/{id}', [RegisteredUserController::class, 'banUser'])->name('ban-user');
-
-=======
     Route::get('/user-posts', [UserPostController::class, 'showUserPost'])->name('admin.user-posts');
 
     Route::get('/transactions', action: [TransactionController::class, 'show'])->name('admin.transactions');
->>>>>>> 27e8737bc4f53bf0fe4e677f60c67b5fdfaa5b31
+    Route::get('/admin/renter-owner-list', [RegisteredUserController::class, 'index'])->name('admin.renter-owner-list');
+Route::delete('/admin/ban-user/{id}', [RegisteredUserController::class, 'banUser'])->name('ban-user');
 });
 
 
