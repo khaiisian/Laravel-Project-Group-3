@@ -18,8 +18,8 @@
         <h1 class="mb-4 text-center">Renter List</h1>
         <!-- Renter Table -->
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -56,8 +56,8 @@
         <h1 class="mb-4 text-center">Owner List</h1>
         <!-- Owner Table -->
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
