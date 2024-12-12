@@ -99,6 +99,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/admin_home', [AdminHomeController::class, 'showDashboard'])->name(name: 'admin_home');
     Route::get('/properties', [PropertyController::class, 'showProperty'])->name('admin.properties');
+    
     Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
     Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
     Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');

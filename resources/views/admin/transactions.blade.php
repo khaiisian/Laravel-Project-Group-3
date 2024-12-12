@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <title>Admin transcation</title>
+    <title>Admin Transactions</title>
 </head>
 
 <body>
@@ -17,7 +17,12 @@
                 <tr>
                     <th>ID</th>
                     <th>User Name</th>
-                    <th>Property ID</th>
+                    <th>Owner Name</th>
+                    <th>Content</th>
+                    <th>Address</th>
+                    <th>Description</th>
+                    <th>Township</th>
+                    <th>Selection Type</th>
                     <th>Date</th>
                 </tr>
             </thead>
@@ -25,9 +30,14 @@
                 @foreach($transactions as $transaction)
                     <tr>
                         <td>{{ $transaction->id }}</td>
-                        <td>{{ $transaction->enduser->user->name }}</td>
-                        <td>{{ $transaction->property_id }}</td>
-                        <td>{{ $transaction->date }}</td>
+                        <td>{{ $transaction->enduser->user->name }}</td> <!-- End User Name -->
+                        <td>{{ $transaction->property->houseOwner->user->name }}</td> <!-- Owner Name -->
+                        <td>{{ $transaction->property->content }}</td> <!-- Content of the property -->
+                        <td>{{ $transaction->property->address }}</td> <!-- Property Address -->
+                        <td>{{ $transaction->property->description }}</td> <!-- Property Description -->
+                        <td>{{ $transaction->property->township->name }}</td> <!-- Township Name -->
+                        <td>{{ $transaction->property->selectionType->name }}</td> <!-- Selection Type Name -->
+                        <td>{{ $transaction->date }}</td> <!-- Transaction Date -->
                     </tr>
                 @endforeach
             </tbody>

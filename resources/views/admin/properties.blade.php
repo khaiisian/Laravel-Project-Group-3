@@ -15,7 +15,7 @@
 
     <div class="container ">
         @include('admin.admin_header')
-        <h2 class="">Properties List</h2>
+        <h2 class="">Properties List</h2><br>
 
         <!-- Property Form for Admin -->
 
@@ -47,7 +47,7 @@
                         <tr>
                             <td>{{ $property->id }}</td>
                             <td>{{ $property->propertyType->name ?? 'N/A' }}</td>
-                            <td>{{ $property->houseOwner->name ?? 'N/A' }}</td>
+                            <td>{{ $property->houseOwner->user->name ?? 'N/A' }}</td>
                             <td>{{ $property->township->name ?? 'N/A' }}</td>
                             <td>{{ $property->selectionType->name ?? 'N/A' }}</td>
                             <td>{{ $property->content }}</td>
