@@ -115,6 +115,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/townships', [TownshipController::class, 'store'])->name('townships.store');
     Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
 
+    Route::get('/user-posts', [UserPostController::class, 'showUserPost'])->name('admin.user-posts');
 });
 
 
