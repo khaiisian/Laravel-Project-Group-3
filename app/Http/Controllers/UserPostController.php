@@ -115,5 +115,24 @@ class UserPostController extends Controller
         return view('user_side.view', compact('posts'));
     }
 
-    
+    public function showUserPost()
+    {
+        // Get all posts
+        $posts = UserPost::all();
+
+        // Process each post
+        foreach ($posts as $post) {
+            // Attach user info
+            $post->user_info = $this->getUserInfo($post->end_user_id);
+
+            // Attach region name
+            $post->region_name = $this->getRegionName($post->region_id);
+
+            // Attach township name
+            $post->township_name = $this->getTownshipName($post->township_id);
+        }
+
+        // Return to the view
+        return view('admin.userpost', compact('posts'));
+    }
 }
