@@ -69,7 +69,6 @@ Route::get('/user/filter', [PropertyController::class, 'userFilter'])->name('use
 Route::get('/filter', [PropertyController::class, 'filterProperties'])->name('filter.properties');
 // Route::get('/admin/properties', [PropertyController::class, 'showProperties']);
 // Route::get('/admin/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
-Route::get('/admin/townships', [TownshipController::class, 'showTownships']);
 // route for store Property.
 
 
@@ -116,6 +115,8 @@ Route::middleware(['role:admin'])->group(function () {
     Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
 
     Route::get('/user-posts', [UserPostController::class, 'showUserPost'])->name('admin.user-posts');
+
+    Route::get('/transactions', action: [TransactionController::class, 'show'])->name('admin.transactions');
 });
 
 

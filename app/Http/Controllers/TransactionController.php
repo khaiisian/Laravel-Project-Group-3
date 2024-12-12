@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function show()
-    {
-        $transactions = Transaction::all();
-        return view('admin.transactions', compact('transactions'));
-    }
+{
+    // Eager load the 'enduser' and 'user' relationships
+    $transactions = Transaction::with(['enduser.user'])->get();
+    return view('admin.transactions', compact('transactions'));
+}
+
     public function contactOwner(Request $request)
 {
     $user = auth()->user();  // Get the authenticated user

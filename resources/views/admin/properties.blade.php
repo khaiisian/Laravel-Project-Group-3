@@ -15,7 +15,7 @@
 
     <div class="container mt-5">
         @include('admin.admin_header')
-        <h1 class="mb-4 text-center">Properties List</h1>
+        <h2 class="">Properties List</h2>
 
         <!-- Property Form for Admin -->
 
@@ -23,7 +23,7 @@
         <!-- Properties Table -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
+                <thead class="table table-bordered">
                     <tr>
                         <th>ID</th>
                         <th>Type</th>
