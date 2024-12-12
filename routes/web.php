@@ -102,6 +102,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/property-types', [PropertyTypeController::class, 'showPropertyType'])->name('admin.property-types');
     Route::post('property-types', [PropertyTypeController::class, 'store'])->name('property-types.store');
     Route::delete('property-types/{id}', [PropertyTypeController::class, 'destroy'])->name('property-types.destroy');
+<<<<<<< HEAD
     Route::get('/region', [RegionController::class, 'goToRegion'])->name('admin.region');
     Route::post('region', [RegionController::class, 'store'])->name('region.store');
     Route::delete('region/{id}', [RegionController::class, 'destroy'])->name('region.destroy');
@@ -111,6 +112,11 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/selection-type', [SelectionTypeController::class, 'store'])->name('selection-type.store');
     Route::delete('/selection-type/{id}', [SelectionTypeController::class, 'destroy'])->name('selection-type.destroy');
  
+=======
+    Route::get('/townships', [TownshipController::class, 'showTownships'])->name('admin.townships');
+    Route::post('/townships', [TownshipController::class, 'store'])->name('townships.store');
+    Route::delete('/townships/{id}', [TownshipController::class, 'destroy'])->name('townships.destroy');
+>>>>>>> a86032883fd7ccaef30735eba092fee960eba80d
 });
 
 
