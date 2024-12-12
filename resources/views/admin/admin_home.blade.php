@@ -11,8 +11,9 @@
 </head>
 
 <body>
+<div class="container ">
 @include('admin.admin_header')
-    <div class="container mt-5">
+
         
         <h1 class="mb-4 text-center">Admin Dashboard</h1>
         <div class="flex justify-evenly flex-wrap gap-y-4">

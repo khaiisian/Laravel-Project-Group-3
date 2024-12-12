@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container mt-5">
+    <div class="container ">
         @include('admin.admin_header')
         <h1 class="mb-4 text-center">Renter List</h1>
         <!-- Renter Table -->

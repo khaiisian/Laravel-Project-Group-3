@@ -65,7 +65,10 @@ class FeedbackController extends Controller
      */
     public function show(Feedback $feedback)
     {
-        //
+        $feedbacks = Feedback::with('user')->get();
+
+        // Pass feedbacks to the view
+        return view('admin.admin-feedback', compact('feedbacks'));
     }
 
     /**

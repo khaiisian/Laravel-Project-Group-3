@@ -122,6 +122,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/transactions', action: [TransactionController::class, 'show'])->name('admin.transactions');
     Route::get('/admin/renter-owner-list', [RegisteredUserController::class, 'index'])->name('admin.renter-owner-list');
 Route::delete('/admin/ban-user/{id}', [RegisteredUserController::class, 'banUser'])->name('ban-user');
+Route::get('admin/feedbacks', [FeedbackController::class, 'show'])->name('admin.feedbacks');
 });
 
 
