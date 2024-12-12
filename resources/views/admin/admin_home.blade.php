@@ -87,7 +87,7 @@
                         <path fill="none" d="M0 0h24v24H0z" />
                     </svg></div>
                 <div class="text-lg font-bold flex justify-center flex-col items-center">
-                    <a href="" class=" inline-block no-underline text-black">Regions</a>
+                    <a href="{{route('admin.region')}}" class=" inline-block no-underline text-black">Regions</a>
                     <p class="text-sm">{{ $region_count }}</p>
                 </div>
             </div>

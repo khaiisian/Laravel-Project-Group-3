@@ -25,5 +25,30 @@ class RegionController extends Controller
 
         return view('user_side.user_home', compact('regions', 'propertyTypes', 'township', 'selectedRegionId', 'selectedPropertyTypeId'));
     }
+    public function goToRegion()
+    {
+        $regions = Region::all();
+        return view('admin.region', compact('regions'));
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Region::updateOrCreate(
+            ['id' => $request->id],
+            ['name' => $request->name]
+        );
+
+        return redirect()->back()->with('success', 'Region saved successfully.');
+    }
+    public function destroy($id)
+    {
+        $regions = Region::findOrFail($id);
+        $regions->delete();
+
+        return redirect()->back()->with('success', 'Region deleted successfully.');
+    }
 }
 

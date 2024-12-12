@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Types List</title>
     <!-- Link Bootstrap CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -14,14 +13,14 @@
 <body>
     @include('admin.admin_header')
     <div class="container">
-        <h2>Manage Property Types</h2>
+        <h2>Manage Region Types</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         <!-- Create/Edit Form -->
-        <form action="{{ route('property-types.store') }}" method="POST" class="mb-4 mx-auto p-4"
+        <form action="{{ route('region.store') }}" method="POST" class="mb-4 mx-auto p-4"
             style="width: 30%; background-color: #f8f9fa; border-radius: 20px;">
             @csrf
             <!-- ID Field (Hidden) -->
@@ -32,8 +31,8 @@
 
             <!-- Name Field -->
             <div class="mb-3">
-                <label for="name" class="form-label">Property Type Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter property type name"
+                <label for="name" class="form-label">Region Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter region name"
                     value="">
             </div>
 
@@ -55,17 +54,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($propertyTypes as $propertyType)
+                @foreach ($regions as $type)
                     <tr>
-                        <td>{{ $propertyType->id }}</td>
-                        <td>{{ $propertyType->name }}</td>
+                        <td>{{ $type->id }}</td>
+                        <td>{{ $type->name }}</td>
                         <td>
                             <!-- Edit Button -->
                             <button class="btn btn-success btn-sm"
-                                onclick="editPropertyType('{{ $propertyType->id }}', '{{ $propertyType->name }}')">Edit</button>
+                                onclick="editPropertyType('{{ $type->id }}', '{{ $type->name }}')">Edit</button>
 
                             <!-- Delete Button -->
-                            <form action="{{ route('property-types.destroy', $propertyType->id) }}" method="POST"
+                            <form action="{{ route('region.destroy', $type->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
                                 @method('DELETE')
