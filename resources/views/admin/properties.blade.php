@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container mt-5">
+    <div class="container ">
         @include('admin.admin_header')
         <h2 class="">Properties List</h2>
 
