@@ -45,8 +45,8 @@
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.region')}}">Region</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('selection-type.show')}}">Selection Types</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.townships')}}">Townships</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">Transaction</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">User Posts</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.transactions')}}">Transaction</a>
+            <a class="nav-item nav-link link-body-emphasis" href="{{route('admin.user-posts')}}">User Posts</a>
             <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-comment icon_size"></i></a>
             <a class="nav-item nav-link link-body-emphasis" href="#"><i class="fa-regular fa-user"></i></a>
         </nav>
