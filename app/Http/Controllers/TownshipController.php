@@ -22,8 +22,9 @@ class TownshipController extends Controller
     }
     public function showTownships()
     {
+        $regions=Region::all();
         $townships = Township::with('region')->get(); // Load the region relationship
-        return view('admin.townships', compact('townships')); // Pass the townships to the view
+        return view('admin.townships', compact('townships','regions')); // Pass the townships to the view
     }
 
     public function store(Request $request)

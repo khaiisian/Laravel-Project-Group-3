@@ -40,8 +40,8 @@
                 <label for="region_id" class="form-label">Region</label>
                 <select name="region_id" id="region_id" class="form-control">
                     <option value=""selected>Select Region</option>
-                    @foreach ($townships as $township)
-                        <option value="{{ $township->region->id }}">{{ $township->region->name }}</option>
+                    @foreach ($regions as $region)
+                        <option value="{{ $region->id }}">{{ $region->name }}</option>
                     @endforeach
                 </select>
             </div>
