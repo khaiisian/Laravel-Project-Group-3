@@ -56,13 +56,12 @@
 
 
             <a class="nav-item nav-link link-body-emphasis" href="contact">Contact</a>
-            <a class="nav-item nav-link link-body-emphasis" href="feedback">
-                @if(auth()->user() && auth()->user()->role == 'owner')
-                style="display:block;"
-                @else
-                style="display:none;"
-                @endif
-                <i class="fa-regular fa-comment icon_size mr-2"></i> Feedback</a>
+            <a class="nav-item nav-link link-body-emphasis"
+                href="feedback"
+                style="{{ auth()->user() && auth()->user()->role == 'renter' ? 'display:block;' : 'display:none;' }}">
+                <i class="fa-regular fa-comment icon_size mr-2"></i> Feedback
+            </a>
+
             <a class="nav-item nav-link link-body-emphasis" href="{{route('profile.edit')}}"><i class="fa-regular fa-user mr-2"></i> Profile</a>
             <a class="nav-item nav-link link-body-emphasis" href="{{route('user_side.owner-noti')}}"
                 @if(auth()->user() && auth()->user()->role == 'owner')
